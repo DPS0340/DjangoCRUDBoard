@@ -1,11 +1,7 @@
 from django.db import models
-import django.contrib.auth.models as authModels
+from django.contrib.auth.models import User
 
 # Create your models here.
-
-class User(authModels.User):
-    pass
-
 class Board(models.Model):
     name = models.CharField()
 
