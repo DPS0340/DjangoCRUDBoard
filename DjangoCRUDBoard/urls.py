@@ -20,5 +20,6 @@ from board import views
 urlpatterns = [
     path('', views.index),
     path('admin/', admin.site.urls),
-    path('register/', views.register)
+    path('register', views.register),
+    path('delete_user', views.delete_user)
 ]
