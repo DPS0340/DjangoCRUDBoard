@@ -58,3 +58,8 @@ userLogout = {
     'status': 200,
     'comment': 'Logout succeed'
 }
+loginRequired = {
+    'success': True,
+    'status': 401,
+    'comment': 'not Authorized'
+}

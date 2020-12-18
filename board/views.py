@@ -1,60 +1,49 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.core import serializers
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-import json
 from .errors import *
+from .decorators import *
+from .utils import sendJson
 
 
 # Create your views here.
 
-def sendJson(data):
-    res = json.dumps(data)
-    return HttpResponse(res, content_type='application/json')
 
 
 def index(request):
     return sendJson(APIOnly)
 
 
+@post_only
 def register(request):
-    if request.method != 'POST':
-        data = postOnly
+    keys = ['username', 'email', 'password']
+    values = [request.POST[key] for key in keys]
+    filtered = User.objects.filter(username=values[0])
+    if filtered.count() != 0:
+        data = userAlreadyRegistered
     else:
-        keys = ['username', 'email', 'password']
-        values = [request.POST[key] for key in keys]
-        filtered = User.objects.filter(username=values[0])
-        if filtered.count() != 0:
-            data = userAlreadyRegistered
-        else:
-            User.objects.create_user(*values)
-            data = registerSucceed
+        User.objects.create_user(*values)
+        data = registerSucceed
     return sendJson(data)
 
 
+@post_only
 def delete_user(request):
-    if request.method != 'POST':
-        data = postOnly
+    keys = ['username', 'email', 'password']
+    values = [request.POST[key] for key in keys]
+    dic = dict()
+    for k, v in zip(keys, values):
+        dic[k] = v
+    filtered = User.objects.filter(**dic)
+    if filtered.count() == 0:
+        data = noUser
     else:
-        keys = ['username', 'email', 'password']
-        values = [request.POST[key] for key in keys]
-        dic = dict()
-        for k, v in zip(keys, values):
-            dic[k] = v
-        filtered = User.objects.filter(**dic)
-        if filtered.count() == 0:
-            data = noUser
-        else:
-            filtered.delete()
-            data = deleteUserSucceed
+        filtered.delete()
+        data = deleteUserSucceed
     return sendJson(data)
 
 
+@post_only
 def login(request):
-    if request.method != 'POST':
-        data = postOnly
-    elif 'userid' in request.session:
+    if 'userid' in request.session:
         data = userAlreadyLogin
     else:
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
@@ -65,7 +54,7 @@ def login(request):
             data = userDoesNotMatch
     return sendJson(data)
 
-
+@login_required
 def logout(request):
     if 'userid' not in request.session:
         data = userAlreadyLogout
@@ -77,3 +66,4 @@ def logout(request):
         except User.DoesNotExist:
             data = userDoesNotExist
     return sendJson(data)
+
