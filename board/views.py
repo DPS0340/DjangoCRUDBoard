@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.core import serializers
 from django.contrib.auth.models import User
 import json
+from .errors import *
 # Create your views here.
 
 def sendJson(data):
@@ -10,46 +11,25 @@ def sendJson(data):
     return HttpResponse(res, content_type='application/json')
 
 def index(request):
-    data = {
-        'success': False,
-        'status': 404,
-        'comment': 'API Only'
-    }
-    return sendJson(data)
-    
+    return sendJson(APIOnly)
+
 def register(request):
     if request.method != 'POST':
-        data = {
-            'success': False,
-            'status': 400,
-            'comment': 'only POST allowed'
-        }
+        data = postOnly
     else:
         keys = ['username', 'email', 'password']
         values = [request.POST[key] for key in keys]
         filtered = User.objects.filter(username=values[0])
         if filtered.count() != 0:
-            data = {
-                'success': True,
-                'status': 403,
-                'comment': 'User already registered'
-            } 
+            data = userAlreadyRegistered
         else:
             User.objects.create_user(*values)
-            data = {
-                'success': True,
-                'status': 200,
-                'comment': 'register succeed'
-            }
+            data = registerSucceed
     return sendJson(data)
 
 def delete_user(request):
     if request.method != 'POST':
-        data = {
-            'success': False,
-            'status': 400,
-            'comment': 'only POST allowed'
-        }
+        data = postOnly
     else:
         keys = ['username', 'email', 'password']
         values = [request.POST[key] for key in keys]
@@ -58,16 +38,14 @@ def delete_user(request):
             dic[k] = v
         filtered = User.objects.filter(**dic)
         if filtered.count() == 0:
-            data = {
-                'success': True,
-                'status': 401,
-                'comment': 'there\'s no matched user'
-            }  
+            data = noUser
         else:
             filtered.delete()
-            data = {
-                'success': True,
-                'status': 200,
-                'comment': 'delete user succeed'
-            }
+            data = deleteUserSucceed
+    return sendJson(data)
+
+def login(request):
+    if request.method != 'POST':
+        data = postOnly
+    
     return sendJson(data)
