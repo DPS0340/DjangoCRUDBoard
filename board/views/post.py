@@ -18,7 +18,7 @@ class PostView(View):
         posts = json.loads(serialize("json",
         Post.objects
             .filter(board=board)
-            .order_by('-created_at')[:10]))
+            .order_by('-id')[:10]))
         data['data'] = posts
         return send_json(data)
 
