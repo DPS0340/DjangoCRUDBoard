@@ -21,6 +21,7 @@ from board.views.delete_user import DeleteUserView
 from board.views.login import LoginView
 from board.views.logout import LogoutView
 from board.views.post import PostView
+from board.views.board import BoardView
 import sys
 
 sys.path.append("../board")
@@ -32,6 +33,8 @@ urlpatterns = [
     path('register', RegisterView.as_view()),
     path('delete_user', DeleteUserView.as_view()),
     path('login', LoginView.as_view(), name='login'),
-    path('logout', login_required(LogoutView.as_view())),
-    path('post', login_required(PostView.as_view())),
+    path('logout', LogoutView.as_view()),
+    path('post', PostView.as_view()),
+    path('board', BoardView.as_view()),
+
 ]

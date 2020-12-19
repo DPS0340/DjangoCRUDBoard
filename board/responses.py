@@ -66,20 +66,30 @@ loginRequired = {
 postSucceed = {
     'success': True,
     'status': 200,
-    'comment': 'Writing post succeed'
+    'comment': 'Post request succeed'
 }
-getPost = {
+getSucceedFunc = lambda field: {
     'success': True,
     'status': 200,
-    'comment': 'obtaining post succeed'
+    'comment': f'obtaining {field} succeed'
 }
 boardRequired = {
-    'success': True,
+    'success': False,
     'status': 400,
     'comment': 'Board argument required'
 }
 notImplemented = {
-    'success': True,
+    'success': False,
     'status': 502,
     'comment': 'Not Implemented'
+}
+postingElementExists = {
+    'success': False,
+    'status': 400,
+    'comment': 'Posting Element Exists'
+}
+boardDoesNotExists = {
+    'success': False,
+    'status': 400,
+    'comment': 'Board does not exists'
 }
