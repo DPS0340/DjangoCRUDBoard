@@ -7,7 +7,6 @@ from .utils import sendJson
 # Create your views here.
 
 
-
 def index(request):
     return sendJson(APIOnly)
 
@@ -54,6 +53,7 @@ def login(request):
             data = userDoesNotMatch
     return sendJson(data)
 
+
 @login_required
 def logout(request):
     if 'userid' not in request.session:
@@ -66,4 +66,3 @@ def logout(request):
         except User.DoesNotExist:
             data = userDoesNotExist
     return sendJson(data)
-
