@@ -15,13 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from board import views
+from board.views.index import IndexView
+from board.views.register import RegisterView
+from board.views.delete_user import DeleteUserView
+from board.views.login import LoginView
+from board.views.logout import LogoutView
+from board.views.post import PostView
 
 urlpatterns = [
-    path('', views.index),
+    path('', IndexView.as_view()),
     path('admin/', admin.site.urls),
-    path('register', views.register),
-    path('delete_user', views.delete_user),
-    path('login', views.login),
-    path('logout', views.logout),
+    path('register', RegisterView.as_view()),
+    path('delete_user', DeleteUserView.as_view()),
+    path('login', LoginView.as_view()),
+    path('logout', LogoutView.as_view()),
+    path('post', PostView.as_view()),
 ]
