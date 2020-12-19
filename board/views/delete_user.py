@@ -1,4 +1,4 @@
-from ..errors import *
+from ..responses import *
 from ..utils import send_json
 from ..models import User
 from django.views import View

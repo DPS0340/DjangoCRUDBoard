@@ -7,9 +7,9 @@ class Board(models.Model):
     name = models.CharField(max_length=MAX_CHARFIELD_LENGTH)
 
 class Post(models.Model):
+    title = models.CharField(max_length=MAX_CHARFIELD_LENGTH)
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=MAX_CHARFIELD_LENGTH)
     content = models.TextField()
 
 class Reply(models.Model):

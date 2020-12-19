@@ -49,7 +49,7 @@ userDoesNotMatch = {
     'comment': 'Username and password does not match'
 }
 userAlreadyLogout = {
-    'success': True,
+    'success': False,
     'status': 403,
     'comment': 'User has already logged out'
 }
@@ -59,7 +59,22 @@ userLogout = {
     'comment': 'Logout succeed'
 }
 loginRequired = {
-    'success': True,
+    'success': False,
     'status': 401,
     'comment': 'not Authorized'
+}
+postSucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'Writing post succeed'
+}
+getPost = {
+    'success': True,
+    'status': 200,
+    'comment': 'obtaining post succeed'
+}
+boardRequired = {
+    'success': True,
+    'status': 400,
+    'comment': 'Board argument required'
 }
