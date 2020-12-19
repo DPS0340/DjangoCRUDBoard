@@ -1,5 +1,5 @@
 from ..errors import *
-from ..utils import sendJson
+from ..utils import send_json
 from ..models import User
 from django.contrib.auth.decorators import login_required
 from django.views import View

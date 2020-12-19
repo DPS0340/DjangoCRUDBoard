@@ -1,5 +1,5 @@
 from ..errors import *
-from ..utils import sendJson
+from ..utils import send_json
 from ..models import User
 from django.views import View
 
@@ -13,4 +13,4 @@ class RegisterView(View):
         else:
             User.objects.create_user(*values)
             data = registerSucceed
-        return sendJson(data)
+        return send_json(data)

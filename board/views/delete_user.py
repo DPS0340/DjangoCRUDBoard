@@ -1,5 +1,5 @@
 from ..errors import *
-from ..utils import sendJson
+from ..utils import send_json
 from ..models import User
 from django.views import View
 
@@ -17,4 +17,4 @@ class DeleteUserView(View):
         else:
             filtered.delete()
             data = deleteUserSucceed
-        return sendJson(data)
+        return send_json(data)

@@ -1,6 +1,6 @@
 from django.views import View
 from ..errors import *
-from ..utils import sendJson
+from ..utils import send_json
 from django.contrib.auth import authenticate
 
 
@@ -15,4 +15,4 @@ class LoginView(View):
                 data = userLogin
             else:
                 data = userDoesNotMatch
-        return sendJson(data)
+        return send_json(data)
