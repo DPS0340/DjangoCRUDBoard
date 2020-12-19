@@ -7,5 +7,5 @@ def send_json(data):
     return HttpResponse(res, content_type='application/json')
 
 
-def pop_args(dict, *args):
-    return {arg: dict[arg] for arg in args}
+def pop_args(dict_, *args):
+    return {arg: dict_[arg] for arg in args}
