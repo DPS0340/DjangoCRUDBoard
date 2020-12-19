@@ -1,14 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .constants import MAX_CHARFIELD_LENGTH
 
 # Create your models here.
 class Board(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=MAX_CHARFIELD_LENGTH)
 
 class Post(models.Model):
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField()
+    title = models.CharField(max_length=MAX_CHARFIELD_LENGTH)
     content = models.TextField()
 
 class Reply(models.Model):
