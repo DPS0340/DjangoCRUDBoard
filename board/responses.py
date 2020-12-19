@@ -78,3 +78,8 @@ boardRequired = {
     'status': 400,
     'comment': 'Board argument required'
 }
+notImplemented = {
+    'success': True,
+    'status': 502,
+    'comment': 'Not Implemented'
+}
