@@ -9,10 +9,9 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+from DjangoCRUDBoard import secret_key
 from DjangoCRUDBoard.disable import DisableCSRF
 from pathlib import Path
-import .secret_key
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
