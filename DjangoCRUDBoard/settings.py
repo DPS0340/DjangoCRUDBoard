@@ -32,7 +32,6 @@ SESSION_ENGINE = "django.contrib.sessions.backends.file"
 
 # Application definition
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 INSTALLED_APPS = [
     'board',
@@ -42,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +53,6 @@ MIDDLEWARE = [
 ]
 MIDDLEWARE_CLASSES = [
     DisableCSRF,
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
 
