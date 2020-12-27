@@ -20,7 +20,6 @@ pypiwin32==223
 pyrsistent==0.17.3
 python-dateutil==2.8.1
 pytz==2020.4
-pywin32==300
 PyYAML==5.3.1
 requests==2.24.0
 semantic-version==2.5.0
