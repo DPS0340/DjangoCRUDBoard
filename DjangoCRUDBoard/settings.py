@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from DjangoCRUDBoard import secret_key
 from DjangoCRUDBoard.disable import DisableCSRF
 from pathlib import Path
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,6 +83,8 @@ WSGI_APPLICATION = 'DjangoCRUDBoard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+POSTGRES_PORT = 5432
+
 if DEBUG:
     DATABASES = {
         'default': {
@@ -90,8 +93,16 @@ if DEBUG:
         }
     }
 else:
-    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
-
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'USER': os.environ['DB_USER'],
+            'PASSWORD': os.environ['DB_PASSWORD'],
+            'HOST': os.environ['DB_HOST'],
+            'PORT': POSTGRES_PORT,
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
