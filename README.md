@@ -18,6 +18,8 @@ CI: Github Actions
 
 배포: AWS Elastic Beanstalk
 
+DB: AWS RDS상의 PostgreSQL
+
 ## 데이터베이스 모델링
 
 TODO
