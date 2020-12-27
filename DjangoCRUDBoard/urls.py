@@ -32,7 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register', RegisterView.as_view()),
     path('delete_user', DeleteUserView.as_view()),
-    path('login', LoginView.as_view(), name='login'),
+    path('login', LoginView.as_view()),
     path('logout', LogoutView.as_view()),
     path('post', PostView.as_view()),
     path('board', BoardView.as_view()),
