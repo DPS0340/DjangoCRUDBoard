@@ -2,3 +2,7 @@ db.sqlite3
 **/__pycache__
 venv
 .idea
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
