@@ -8,7 +8,7 @@ class DeleteUserView(View):
     def post(self, request):
         keys = ['username', 'email', 'password']
         dic = pop_args(request.POST, *keys)
-        if any(filter(lambda x: x is None, dic)):
+        if None in dic.values():
             return send_json(illegalArgument)
         filtered = User.objects.filter(**dic)
         if filtered.count() == 0:

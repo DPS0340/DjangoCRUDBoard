@@ -8,7 +8,7 @@ class RegisterView(View):
     def post(self, request):
         keys = ['username', 'email', 'password']
         dic = pop_args(request.POST, *keys)
-        if any(filter(lambda x: x is None, dic)):
+        if None in dic.values():
             return send_json(illegalArgument)
         filtered = User.objects.filter(username=dic['username'])
         if filtered.count() != 0:

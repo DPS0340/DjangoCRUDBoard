@@ -29,6 +29,8 @@ class PostView(View):
     @login_required
     def post(self, request):
         dic = pop_args(request.POST, "title", "board")
+        if None in dic.values():
+            return send_json(illegalArgument)
         Post.objects.create(*dic)
         data = postSucceed
         return send_json(data)
