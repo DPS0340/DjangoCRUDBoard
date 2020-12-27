@@ -16,6 +16,8 @@ class BoardView(View):
 
     @login_required
     def post(self, request):
+        if 'name' not in request.POST:
+            return send_json(illegalArgument)
         if Board.objects.filter(name=request.POST['name']):
             return send_json(postingElementExists)
         Board.objects.create(name=request.POST['name'])
