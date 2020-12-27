@@ -15,6 +15,7 @@ class LoginView(View):
         else:
             data = userDoesNotMatch
         return send_json(data)
+
     def get(self, request):
         if 'userid' in request.session:
             data = userAlreadyLogin
