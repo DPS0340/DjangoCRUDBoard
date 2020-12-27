@@ -6,7 +6,11 @@
 
 ## 사용 스택
 
-TODO
+개발: Python, Django
+
+CI: Github Actions
+
+배포: AWS Elastic Beanstalk
 
 ## 데이터베이스 모델링
 
