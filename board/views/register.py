@@ -5,7 +5,7 @@ from django.views import View
 
 
 class RegisterView(View):
-    def get(self, request):
+    def post(self, request):
         keys = ['username', 'email', 'password']
         dic = pop_args(request.POST, *keys)
         filtered = User.objects.filter(username=dic['username'])
