@@ -4,7 +4,7 @@
 
 차후에 React로 프론트엔드가 개발될 게시판의 백엔드 서버입니다.
 
-REST 방식으로 JSON을 결과값으로 .
+REST 방식으로 JSON을 결과값으로 출력합니다.
 
 ## 팀원
 
@@ -24,4 +24,6 @@ TODO
 
 ## API
 
-[PostMan API 링크](https://documenter.getpostman.com/view/4929660/TVsxC6r1)
+Postman으로 문서화 하였습니다.
+
+[API  링크](https://documenter.getpostman.com/view/4929660/TVsxC6r1)
