@@ -14,4 +14,4 @@ TODO
 
 ## API
 
-TODO
+[PostMan API 링크](https://documenter.getpostman.com/view/4929660/TVsxC6r1)
