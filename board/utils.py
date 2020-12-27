@@ -8,4 +8,4 @@ def send_json(data):
 
 
 def pop_args(dict_, *args):
-    return {arg: dict_[arg] for arg in args}
+    return {arg: dict_[arg] if arg in dict_ else None for arg in args}

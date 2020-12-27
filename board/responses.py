@@ -93,3 +93,8 @@ boardDoesNotExists = {
     'status': 400,
     'comment': 'Board does not exists'
 }
+illegalArgument = {
+    'success': False,
+    'status': 400,
+    'comment': 'Illegal argument'
+}
