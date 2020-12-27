@@ -10,7 +10,7 @@ class DeleteUserView(View):
         dic = pop_args(request.POST, *keys)
         if None in dic.values():
             return send_json(illegalArgument)
-        filtered = User.objects.filter(**dic)
+        filtered = User.objects.all.filter(**dic)
         if filtered.count() == 0:
             data = noUser
         else:
