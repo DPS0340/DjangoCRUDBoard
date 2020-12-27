@@ -80,7 +80,6 @@ WSGI_APPLICATION = 'DjangoCRUDBoard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-POSTGRES_PORT = 5432
 
 if DEBUG:
     DATABASES = {
@@ -97,7 +96,7 @@ else:
             'USER': os.environ['DB_USER'],
             'PASSWORD': os.environ['DB_PASSWORD'],
             'HOST': os.environ['DB_HOST'],
-            'PORT': POSTGRES_PORT,
+            'PORT': os.environ['DB_PORT'],
         }
     }
 
