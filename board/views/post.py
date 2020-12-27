@@ -16,10 +16,12 @@ class PostView(View):
         except Board.DoesNotExist:
             return send_json(boardDoesNotExists)
         posts = json.loads(
-            serialize("json",
-            Post.objects
-            .filter(board=board)
-            .order_by('-id')[:10])
+            serialize(
+                "json",
+                Post.objects
+                .filter(board=board)
+                .order_by('-id')[:10]
+            )
         )
         data['data'] = posts
         return send_json(data)
