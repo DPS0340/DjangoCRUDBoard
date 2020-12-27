@@ -19,7 +19,7 @@ deleteUserSucceed = {
     'comment': 'delete user succeed'
 }
 userAlreadyRegistered = {
-    'success': True,
+    'success': False,
     'status': 403,
     'comment': 'User has already registered'
 }
