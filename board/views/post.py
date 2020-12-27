@@ -1,6 +1,6 @@
 from ..responses import *
 from ..utils import send_json, pop_args
-from ..models import Post, Board
+from ..models import Post, Board, User
 from ..decorators import login_required
 from django.views import View
 from django.core.serializers import serialize
@@ -28,9 +28,12 @@ class PostView(View):
 
     @login_required
     def post(self, request):
-        dic = pop_args(request.POST, "title", "board")
+        dic = pop_args(request.POST, "title", "board", "content")
         if None in dic.values():
             return send_json(illegalArgument)
-        Post.objects.create(*dic)
+        userid = int(request.session['userid'])
+        dic['board'] = Board.objects.filter(name=dic['board'])[0]
+        author = User.objects.filter(id=userid)[0]
+        Post.objects.create(**dic, author=author)
         data = postSucceed
         return send_json(data)
