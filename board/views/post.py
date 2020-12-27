@@ -29,6 +29,7 @@ class PostView(View):
     @login_required
     def post(self, request):
         dic = pop_args(request.POST, "title", "board", "content")
+        # 하나라도 없다면 illegalArgument 처리
         if None in dic.values():
             return send_json(illegalArgument)
         userid = int(request.session['userid'])
