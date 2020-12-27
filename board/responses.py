@@ -9,7 +9,7 @@ postOnly = {
     'comment': 'only POST allowed'
 }
 noUser = {
-    'success': True,
+    'success': False,
     'status': 401,
     'comment': 'there\'s no matched user'
 }
