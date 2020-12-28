@@ -44,4 +44,4 @@ Postman으로 문서화 하였습니다.
 
 'DB_HOST': DB 서버 url
 
-'DB_PORT': 포트, PostgreSQL기준 기본값 5432
+'DB_PORT': DB 서버 포트, PostgreSQL기준 기본값 5432
