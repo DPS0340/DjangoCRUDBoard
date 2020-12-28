@@ -16,6 +16,8 @@ HTTP API 방식으로 JSON을 결과값으로 출력합니다.
 
 개발: Python, Django
 
+의존성 관리: pipenv
+
 CI: Github Actions
 
 배포: AWS Elastic Beanstalk
