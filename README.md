@@ -37,7 +37,11 @@ Postman으로 문서화 하였습니다.
 ### 환경 변수 설정
 
 'Django_secret_key': 시크릿 키, 온라인 등에서 생성 가능
+
 'DB_USER': DB 사용자 id
+
 'DB_PASSWORD': DB 사용자 비밀번호
+
 'DB_HOST': DB 서버 url
+
 'DB_PORT': 포트, PostgreSQL기준 기본값 5432
