@@ -22,6 +22,7 @@ from board.views.login import LoginView
 from board.views.logout import LogoutView
 from board.views.post import PostView
 from board.views.board import BoardView
+from board.views.status import StatusView
 import sys
 
 sys.path.append("../board")
@@ -36,5 +37,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view()),
     path('post/', PostView.as_view()),
     path('board/', BoardView.as_view()),
+    path('status/', StatusView.as_view()),
 
 ]
