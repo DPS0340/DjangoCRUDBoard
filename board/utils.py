@@ -5,7 +5,7 @@ import json
 # 딕셔너리를 JSON으로 전송하는 헬퍼 함수
 def send_json(data):
     res = json.dumps(data)
-    return HttpResponse(res, content_type='application/json')
+    return HttpResponse(res, content_type='application/json', status=data['status'])
 
 
 # 가변 인자로 추출된 딕셔너리를 받아오는 헬퍼 함수
