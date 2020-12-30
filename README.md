@@ -1,6 +1,6 @@
 # KPU C크릿쥬쥬 프로젝트 - 게시판 백엔드(Django)
 
-![GitHub](https://img.shields.io/github/license/dps0340/DjangoCRUDBoard) ![Website](https://img.shields.io/website?url=http%3A%2F%2Fdjangocrudboard-env-2.eba-pncegi8j.ap-northeast-2.elasticbeanstalk.com%2F)
+![GitHub](https://img.shields.io/github/license/DPS0340/DjangoCRUDBoard?style=for-the-badge) ![Website](https://img.shields.io/website?down_color=grey&style=for-the-badge&up_color=blue&url=http%3A%2F%2Fdjangocrudboard-env-2.eba-pncegi8j.ap-northeast-2.elasticbeanstalk.com%2Fstatus)
 
 ## 설명
 
