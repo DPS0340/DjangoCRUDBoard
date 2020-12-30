@@ -100,3 +100,8 @@ illegalArgument = {
     'status': 400,
     'comment': 'Illegal argument'
 }
+ok = {
+    'success': True,
+    'status': 200,
+    'comment': 'OK'
+}
