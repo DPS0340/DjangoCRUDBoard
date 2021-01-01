@@ -8,6 +8,8 @@
 
 HTTP API 방식으로 JSON을 결과값으로 출력합니다.
 
+[스터디 자료 velog](https://velog.io/@dps0340/KPU-C%ED%81%AC%EB%A6%BF%EC%A5%AC%EC%A5%AC-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%9E%90%EB%A3%8C)
+
 ## 팀원
 
 박근우, 장동현, 이하늘, 이지호
