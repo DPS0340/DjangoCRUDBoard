@@ -14,9 +14,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
-      - name: Download task definition
-        run: |
-          aws ecs describe-task-definition --task-definition first-run-task-definition --query taskDefinition > task-definition.json
       - name: Checkout source code
         uses: actions/checkout@v1
       - name: Set up QEMU
@@ -36,6 +33,9 @@ jobs:
           tags: a891/djangocrudboard:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition first-run-task-definition --query taskDefinition > task-definition.json
       - name: Deploy to Amazon ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
