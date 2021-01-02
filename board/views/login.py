@@ -1,21 +1,24 @@
 from django.views import View
 from ..responses import *
-from ..utils import send_json
+from ..utils import decode_jwt, send_json, encode_jwt
 from django.contrib.auth import authenticate
-
 
 class LoginView(View):
     def post(self, request):
-        if 'userid' in request.session:
+        session = request.session
+        if 'userid' in session:
             return send_json(userAlreadyLogin)
         if 'username' not in request.POST or 'password' not in request.POST:
             return send_json(illegalArgument)
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
-        if user is not None:
-            request.session['userid'] = user.id
-            data = userLogin
-        else:
-            data = userDoesNotMatch
+        if user is None:
+            return send_json(userDoesNotMatch)
+        prev_dic = {}
+        if 'JWT_TOKEN' in session:
+            prev_dic = decode_jwt(session)
+        encoded = encode_jwt({**prev_dic, 'userid': user.id})
+        session['JWT_TOKEN'] = encoded
+        data = userLogin
         return send_json(data)
 
     def get(self, request):
