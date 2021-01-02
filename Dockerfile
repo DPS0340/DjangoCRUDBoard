@@ -7,4 +7,4 @@ RUN pipenv install
 COPY . ./
 EXPOSE 80                   
 
-CMD python manage.py runserver 0.0.0.0:80
+CMD pipenv run python manage.py runserver 0.0.0.0:80
