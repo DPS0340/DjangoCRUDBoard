@@ -40,6 +40,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: task-definition.json
-          service: djangocrudboard-service
+          service: djangocrudboard
           cluster: default
           wait-for-service-stability: true
