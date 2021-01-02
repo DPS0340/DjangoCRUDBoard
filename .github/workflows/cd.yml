@@ -16,7 +16,7 @@ jobs:
           aws-region: ap-northeast-2
       - name: Download task definition
         run: |
-          aws ecs describe-task-definition --task-definition my-task-definition-family --query taskDefinition > task-definition.json
+          aws ecs describe-task-definition --task-definition first-run-task-definition --query taskDefinition > task-definition.json
       - name: Checkout source code
         uses: actions/checkout@v1
       - name: Set up QEMU
