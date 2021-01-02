@@ -4,15 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-asgiref = "==3.3.1"
-dj-database-url = "==0.5.0"
-psycopg2-binary = "==2.8.6"
-pytz = "==2020.5"
-sqlparse = "==0.4.1"
-Django = "==3.1.4"
+asgiref = "*"
+dj-database-url = "*"
+psycopg2-binary = "*"
+pytz = "*"
+sqlparse = "*"
+Django = "*"
 pyjwt = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = ">=3.6"
