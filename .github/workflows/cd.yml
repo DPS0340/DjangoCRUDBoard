@@ -11,6 +11,9 @@ jobs:
     
     - name: Checkout source code
       uses: actions/checkout@v1
+    
+    - name: Fetch requirements.txt
+      run: pip install pipenv && pipenv install && pipenv lock -r > requirements.txt
 
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*'
