@@ -12,10 +12,13 @@ jobs:
     - name: Checkout source code
       uses: actions/checkout@v1
       
-    - name: Pipenv install - 1
+    - name: Pyenv install
+      run: curl https://pyenv.run | bash
+      
+    - name: install Pipenv - 1
       run: sudo pip install pipenv pyenv
       
-    - name: Pipenv install - 2
+    - name: install Pipenv - 2
       run: pipenv install 
     
     - name: Fetch requirements.txt
