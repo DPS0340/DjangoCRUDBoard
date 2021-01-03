@@ -15,11 +15,8 @@ jobs:
     - name: Pyenv install
       run: curl https://pyenv.run | bash
       
-    - name: install Pipenv - 1
+    - name: install Pipenv
       run: sudo pip install pipenv
-      
-    - name: install Pipenv - 2
-      run: pipenv install 
     
     - name: Fetch requirements.txt
       run: pipenv lock -r > requirements.txt
