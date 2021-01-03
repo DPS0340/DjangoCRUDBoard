@@ -19,7 +19,7 @@ jobs:
       run: sudo pip install pipenv
     
     - name: Fetch requirements.txt
-      run: pipenv lock -r > requirements.txt
+      run: pipenv run pipenv lock -r > requirements.txt
 
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*'
