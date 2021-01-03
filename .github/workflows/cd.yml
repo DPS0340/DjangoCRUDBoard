@@ -16,7 +16,7 @@ jobs:
       run: curl https://pyenv.run | bash
       
     - name: install Pipenv - 1
-      run: sudo pip install pipenv pyenv
+      run: sudo pip install pipenv
       
     - name: install Pipenv - 2
       run: pipenv install 
