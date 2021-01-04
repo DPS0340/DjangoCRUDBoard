@@ -9,7 +9,7 @@ dj-database-url = "==0.5.0"
 psycopg2-binary = "==2.8.6"
 pytz = "==2020.5"
 sqlparse = "*"
-Django = "==3.1.4"
+Django = "==2.1.15"
 pyjwt = "==2.0.0"
 
 [dev-packages]
