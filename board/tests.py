@@ -1,9 +1,14 @@
 from django.test import TestCase
+from django.conf import settings
+from django import setup
 
 # Create your tests here.
 class TestIndex(TestCase):
     @classmethod
     def setUpTestData(cls):
+        if not settings.configured:
+            settings.configure(DEBUG=True)
+            setup()
         print("setUpTestData: Run once to set up non-modified data for all class methods.")
         pass
 
