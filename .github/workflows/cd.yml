@@ -20,13 +20,9 @@ jobs:
     
     - name: Fetch requirements.txt
       run: pipenv run pipenv lock -r > requirements.txt
-    
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'
 
     - name: Run test
-      uses: onichandame/python-test-action@master
+      run: pipenv run python manage.py test
 
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*'
