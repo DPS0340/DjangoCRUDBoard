@@ -27,8 +27,6 @@ jobs:
 
     - name: Run test
       uses: onichandame/python-test-action@master
-      with:
-        deps_list: 'requirement'
 
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*'
