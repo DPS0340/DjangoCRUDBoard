@@ -21,6 +21,9 @@ jobs:
     - name: Fetch requirements.txt
       run: pipenv run pipenv lock -r > requirements.txt
 
+    - name: Install test dependencies
+      run: pipenv install
+      
     - name: Run test
       run: pipenv run python manage.py test
 
