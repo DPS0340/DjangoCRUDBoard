@@ -11,7 +11,6 @@ class TestIndex(TestCase):
         pass
 
     def setUp(self):
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DjangoCRUDBoard.settings')
         print("setUp: Run once for every test method to setup clean data.")
         pass
 
