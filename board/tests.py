@@ -1,18 +1,17 @@
 from django.test import TestCase
 from django.conf import settings
 from django import setup
+import os
 
 # Create your tests here.
 class TestIndex(TestCase):
     @classmethod
     def setUpTestData(cls):
-        if not settings.configured:
-            settings.configure(DEBUG=True)
-            setup()
         print("setUpTestData: Run once to set up non-modified data for all class methods.")
         pass
 
     def setUp(self):
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DjangoCRUDBoard.settings')
         print("setUp: Run once for every test method to setup clean data.")
         pass
 
