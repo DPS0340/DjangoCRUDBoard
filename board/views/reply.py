@@ -9,6 +9,8 @@ import json
 
 # 댓글 TODO
 
+# post title -> ID 변경 TODO
+
 class ReplyView(View):
     def get(self, request):
         if "post" not in request.GET:
