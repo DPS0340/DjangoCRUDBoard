@@ -25,7 +25,7 @@ class Reply(models.Model):
     content = models.TextField()
 
 # 대댓글 모델
-# 대댓글, 댓글쓴이, 내용을 가진다
+# 댓글, 대댓글 쓴이, 내용을 가진다
 class AnswerReply(models.Model):
     reply = models.ForeignKey(Reply, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)

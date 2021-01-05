@@ -11,6 +11,23 @@ jobs:
     
     - name: Checkout source code
       uses: actions/checkout@v1
+      
+    - name: Pyenv install
+      run: curl https://pyenv.run | bash
+      
+    - name: Pipenv install
+      run: sudo pip3 install pipenv
+    
+    - name: Fetch requirements.txt
+      run: pipenv run pipenv lock -r > requirements.txt
+
+    - name: Install test dependencies
+      run: pipenv install
+      
+    - name: Run test
+      env:
+        Django_secret_key: ${{ secrets.DJANGO_SECRET_KEY }}
+      run: pipenv run python manage.py test
 
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*'
@@ -25,3 +42,4 @@ jobs:
         version_label: ${{ github.sha }}
         region: ap-northeast-2
         deployment_package: deploy.zip
+        use_existing_version_if_available: true  

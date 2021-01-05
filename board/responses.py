@@ -1,8 +1,8 @@
 # JSON 응답 딕셔너리를 모아둔 코드
 
 APIOnly = {
-    'success': False,
-    'status': 404,
+    'success': True,
+    'status': 200,
     'comment': 'API Only'
 }
 postOnly = {
@@ -114,4 +114,9 @@ replySucceed = {
     'success': True,
     'status': 200,
     'comment': 'reply request succeed'
+}
+ok = {
+    'success': True,
+    'status': 200,
+    'comment': 'OK'
 }

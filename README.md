@@ -1,12 +1,14 @@
 # KPU C크릿쥬쥬 프로젝트 - 게시판 백엔드(Django)
 
-![GitHub](https://img.shields.io/github/license/dps0340/DjangoCRUDBoard) ![Website](https://img.shields.io/website?url=http%3A%2F%2Fdjangocrudboard-env-2.eba-pncegi8j.ap-northeast-2.elasticbeanstalk.com%2F)
+![GitHub](https://img.shields.io/github/license/DPS0340/DjangoCRUDBoard?style=for-the-badge) ![Website](https://img.shields.io/website?down_color=grey&style=for-the-badge&up_color=blue&url=http%3A%2F%2Fdjangocrudboard-env-2.eba-pncegi8j.ap-northeast-2.elasticbeanstalk.com%2Fstatus)
 
 ## 설명
 
 차후에 React로 프론트엔드가 개발될 게시판의 백엔드 서버입니다.
 
 HTTP API 방식으로 JSON을 결과값으로 출력합니다.
+
+[스터디 자료 velog](https://velog.io/@dps0340/KPU-C%ED%81%AC%EB%A6%BF%EC%A5%AC%EC%A5%AC-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%9E%90%EB%A3%8C)
 
 ## 팀원
 
