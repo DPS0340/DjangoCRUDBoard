@@ -9,6 +9,7 @@ dj-database-url = "==0.5.0"
 pytz = "==2020.5"
 sqlparse = "==0.4.1"
 Django = "==3.1.4"
+django-cors-headers = "*"
 
 [dev-packages]
 

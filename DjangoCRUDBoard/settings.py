@@ -28,6 +28,9 @@ SECRET_KEY = '4p8khv@%j%-b^0i_5u63zia_w@7w+j)8xf9()&1+^u+az-07g4'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CORS_REPLACE_HTTPS_REFERER = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
 
 SESSION_ENGINE = "django.contrib.sessions.backends.file"
 
@@ -42,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,11 +56,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 MIDDLEWARE_CLASSES = [
     DisableCSRF,
     'django.middleware.common.CommonMiddleware',
 ]
+
 
 ROOT_URLCONF = 'DjangoCRUDBoard.urls'
 

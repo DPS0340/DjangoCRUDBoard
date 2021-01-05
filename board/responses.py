@@ -100,3 +100,18 @@ illegalArgument = {
     'status': 400,
     'comment': 'Illegal argument'
 }
+postRequired = {
+    'success': False,
+    'status': 400,
+    'comment': 'Post argument required'
+}
+postDoesNotExists = {
+    'success': False,
+    'status': 400,
+    'comment': 'Post does not exists'
+}
+replySucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'reply request succeed'
+}

@@ -22,6 +22,7 @@ from board.views.login import LoginView
 from board.views.logout import LogoutView
 from board.views.post import PostView
 from board.views.board import BoardView
+from board.views.reply import ReplyView
 import sys
 
 sys.path.append("../board")
@@ -29,12 +30,12 @@ from board.decorators import login_required
 
 urlpatterns = [
     path('', IndexView.as_view()),
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('register', RegisterView.as_view()),
     path('delete_user', DeleteUserView.as_view()),
     path('login', LoginView.as_view()),
     path('logout', LogoutView.as_view()),
     path('post', PostView.as_view()),
     path('board', BoardView.as_view()),
-
+    path('reply', ReplyView.as_view()),
 ]
