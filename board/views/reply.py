@@ -2,6 +2,7 @@ from ..responses import *
 from ..utils import send_json, pop_args
 from ..models import User, Post, Reply
 from ..decorators import login_required
+from ..utils import decode_jwt
 from django.views import View
 from django.core.serializers import serialize
 import json
@@ -13,11 +14,11 @@ import json
 
 class ReplyView(View):
     def get(self, request):
-        if "post" not in request.GET:
+        if "pk" not in request.GET:
             return send_json(postRequired)
         data = getSucceedFunc('reply')
         try:
-            post = Post.objects.get(title=request.GET["post"])
+            post = Post.objects.get(pk=request.GET["pk"])
         except Post.DoesNotExist:
             return send_json(postDoesNotExists)
         replys = json.loads(
@@ -32,13 +33,15 @@ class ReplyView(View):
 
     @login_required # 로그인 된 사람만 댓글을 쓸 수 있음
     def post(self, request):
-        dic = pop_args(request.POST, "post", "content")
+        dic = pop_args(request.POST, "pk", "content")
         # 하나라도 없다면 illegalArgument 처리
         if None in dic.values():
             return send_json(illegalArgument)
-        userid = int(request.session['userid'])
-        dic['post'] = Post.objects.filter(title=dic['post'])[0] # post에서 해당 부분의 역할이 무엇인지
+        session = request.session
+        decoded = decode_jwt(session)
+        userid = decoded['userid']
+        post = Post.objects.filter(pk=dic['pk'])[0] 
         author = User.objects.filter(id=userid)[0]
-        Reply.objects.create(**dic, author=author)
+        Reply.objects.create(post=post, author=author, content=dic['content'])
         data = replySucceed
         return send_json(data)
