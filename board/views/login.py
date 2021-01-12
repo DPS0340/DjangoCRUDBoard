@@ -23,7 +23,12 @@ class LoginView(View):
         return send_json(data)
 
     def get(self, request):
-        if 'userid' in request.session:
+        session = request.session
+        if 'JWT_TOKEN' in session:
+            prev_dic = decode_jwt(session)
+        else:
+            prev_dic = {}
+        if 'userid' in prev_dic:
             data = userAlreadyLogin
         else:
             data = loginRequired
