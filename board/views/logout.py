@@ -8,10 +8,9 @@ class LogoutView(View):
     @login_required
     def get(self, request):
         session = request.session
-        if 'userid' not in session:
-            return send_json(userAlreadyLogout)
         exists = True
         decoded = decode_jwt(session)
+        print(decoded)
         if 'userid' not in decoded:
             return send_json(loginRequired)
 
