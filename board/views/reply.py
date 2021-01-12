@@ -2,6 +2,7 @@ from ..responses import *
 from ..utils import send_json, pop_args
 from ..models import User, Post, Reply
 from ..decorators import login_required
+from ..utils import decode_jwt
 from django.views import View
 from django.core.serializers import serialize
 import json
@@ -32,14 +33,15 @@ class ReplyView(View):
 
     @login_required # 로그인 된 사람만 댓글을 쓸 수 있음
     def post(self, request):
-        dic = pop_args(request.POST, "pk", "post", "content")
+        dic = pop_args(request.POST, "pk", "content")
         # 하나라도 없다면 illegalArgument 처리
         if None in dic.values():
             return send_json(illegalArgument)
-        print(request.session.keys())
-        userid = int(request.session['JWT_TOKEN'])
-        dic['pk'] = Post.objects.filter(pk=dic['pk'])[0] 
+        session = request.session
+        decoded = decode_jwt(session)
+        userid = decoded['userid']
+        post = Post.objects.filter(pk=dic['pk'])[0] 
         author = User.objects.filter(id=userid)[0]
-        Reply.objects.create(**dic, author=author)
+        Reply.objects.create(post=post, author=author, content=dic['content'])
         data = replySucceed
         return send_json(data)
