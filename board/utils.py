@@ -30,11 +30,8 @@ def append_jwt_param(session, **kargs):
         decoded[k] = v
     return encode_jwt(decoded)
 
+# 원본 session을 변경시키는 함수
 def delete_jwt_param(session, *args):
     decoded = decode_jwt(session)
-    for arg in args:
-        if arg not in session:
-            # 처리 TODO
-            continue
-        del decoded[arg]
-    return encode_jwt(decoded)
+    session['JWT_TOKEN'] = encode_jwt(dict(filter(lambda x: x not in args, decoded)))
+    return True
