@@ -6,16 +6,17 @@ from django.contrib.auth import authenticate
 class LoginView(View):
     def post(self, request):
         session = request.session
-        if 'userid' in session:
+        if 'JWT_TOKEN' in session:
+            prev_dic = decode_jwt(session)
+        else:
+            prev_dic = {}
+        if 'userid' in prev_dic:
             return send_json(userAlreadyLogin)
         if 'username' not in request.POST or 'password' not in request.POST:
             return send_json(illegalArgument)
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is None:
             return send_json(userDoesNotMatch)
-        prev_dic = {}
-        if 'JWT_TOKEN' in session:
-            prev_dic = decode_jwt(session)
         encoded = encode_jwt({**prev_dic, 'userid': user.id})
         session['JWT_TOKEN'] = encoded
         data = userLogin
