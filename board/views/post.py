@@ -16,12 +16,16 @@ class PostView(View):
             board = Board.objects.get(pk=request.GET["pk"])
         except Board.DoesNotExist:
             return send_json(boardDoesNotExists)
+
+        post_num = 10
+        if "num" in request.GET:
+            post_num = int(request.GET["num"])
         posts = json.loads(
             serialize(
                 "json",
                 Post.objects
                 .filter(board=board)
-                .order_by('-id')[:10]
+                .order_by('-id')[:post_num]
             )
         )
         data['data'] = posts
