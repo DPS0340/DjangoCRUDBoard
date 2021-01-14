@@ -8,6 +8,7 @@ from board.views.logout import LogoutView
 from board.views.post import PostView
 from board.views.board import BoardView
 from board.views.reply import ReplyView
+from board.views.answer_reply import AnswerReplyView
 from board.views.status import StatusView
 import sys
 
@@ -24,4 +25,5 @@ urlpatterns = [
     path(r'^board/?$', BoardView.as_view()),
     path(r'^status/?$', StatusView.as_view()),
     path(r'^reply/?$', ReplyView.as_view()),
+    path(r'^answer_reply/?$', AnswerReplyView.as_view()),
 ]
