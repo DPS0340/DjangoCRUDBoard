@@ -24,10 +24,10 @@ jobs:
     - name: Install test dependencies
       run: pipenv install
       
-    - name: Run test
-      env:
-        Django_secret_key: ${{ secrets.DJANGO_SECRET_KEY }}
-      run: pipenv run python manage.py test
+#     - name: Run test
+#       env:
+#         Django_secret_key: ${{ secrets.DJANGO_SECRET_KEY }}
+#       run: pipenv run python manage.py test
 
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*'
