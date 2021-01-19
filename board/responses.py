@@ -120,3 +120,18 @@ ok = {
     'status': 200,
     'comment': 'OK'
 }
+replyRequired = {
+    'success': False,
+    'status': 400,
+    'comment': 'Reply argument required'
+}
+replyDoesNotExists = {
+    'success': False,
+    'status': 400,
+    'comment': 'Reply does not exists'
+}
+answerReplySucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'AnswerReply request succeed'
+}

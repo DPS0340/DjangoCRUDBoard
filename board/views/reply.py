@@ -21,17 +21,18 @@ class ReplyView(View):
             post = Post.objects.get(pk=request.GET["pk"])
         except Post.DoesNotExist:
             return send_json(postDoesNotExists)
+
         replys = json.loads(
             serialize(
                 "json",
                 Reply.objects.filter(post=post)
-                # order_by 어떻게 추가해줘야 하는지.
+                .order_by('id')  # 댓글은 오름차순
             )
         )
         data['data'] = replys
         return send_json(data)
 
-    @login_required # 로그인 된 사람만 댓글을 쓸 수 있음
+    @login_required  # 로그인 된 사람만 댓글을 쓸 수 있음
     def post(self, request):
         dic = pop_args(request.POST, "pk", "content")
         # 하나라도 없다면 illegalArgument 처리
@@ -40,7 +41,7 @@ class ReplyView(View):
         session = request.session
         decoded = decode_jwt(session)
         userid = decoded['userid']
-        post = Post.objects.filter(pk=dic['pk'])[0] 
+        post = Post.objects.filter(pk=dic['pk'])[0]
         author = User.objects.filter(id=userid)[0]
         Reply.objects.create(post=post, author=author, content=dic['content'])
         data = replySucceed
