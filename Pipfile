@@ -9,11 +9,11 @@ dj-database-url = "==0.5.0"
 pytz = "==2020.5"
 sqlparse = "==0.4.1"
 psycopg2-binary = "==2.8.6"
-Django = "==3.1.5"
+Django = "==2.1.15"
 pyjwt = "==2.0.0"
 django-cors-headers = "==3.4.0"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.6"
