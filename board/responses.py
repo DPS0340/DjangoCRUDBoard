@@ -120,6 +120,11 @@ ok = {
     'status': 200,
     'comment': 'OK'
 }
+no = {
+    'success': False,
+    'status': 400,
+    'comment': 'NO'
+}
 replyRequired = {
     'success': False,
     'status': 400,
