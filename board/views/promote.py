@@ -1,6 +1,7 @@
 from board.utils import send_json
 from ..responses import illegalArgument, userDoesNotExist, promoteSucceed
 from ..models import User
+from django.views import View
 
 class PromoteView(View):
     def post(self, request):

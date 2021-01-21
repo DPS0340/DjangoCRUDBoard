@@ -3,6 +3,7 @@ from ..utils import decode_jwt, send_json
 from ..models import User
 from ..decorators import login_required
 from ..responses import userDoesNotExist, ok, no
+from django.views import View
 
 class IsAdminView(View):
     @login_required
