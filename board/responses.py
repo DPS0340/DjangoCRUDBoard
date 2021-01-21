@@ -135,3 +135,8 @@ answerReplySucceed = {
     'status': 200,
     'comment': 'AnswerReply request succeed'
 }
+promoteSucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'Promote request succeed'
+}
