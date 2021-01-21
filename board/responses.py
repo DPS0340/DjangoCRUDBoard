@@ -145,3 +145,8 @@ promoteSucceed = {
     'status': 200,
     'comment': 'Promote request succeed'
 }
+alreadyPromoted = {
+    'success': False,
+    'status': 403,
+    'comment': 'User has already promoted'
+}
