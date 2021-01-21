@@ -120,6 +120,11 @@ ok = {
     'status': 200,
     'comment': 'OK'
 }
+no = {
+    'success': False,
+    'status': 400,
+    'comment': 'NO'
+}
 replyRequired = {
     'success': False,
     'status': 400,
@@ -134,4 +139,14 @@ answerReplySucceed = {
     'success': True,
     'status': 200,
     'comment': 'AnswerReply request succeed'
+}
+promoteSucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'Promote request succeed'
+}
+alreadyPromoted = {
+    'success': False,
+    'status': 403,
+    'comment': 'User has already promoted'
 }

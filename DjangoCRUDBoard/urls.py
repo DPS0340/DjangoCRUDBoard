@@ -1,3 +1,5 @@
+from board.views.isAdmin import IsAdminView
+from board.views.promote import PromoteView
 from django.contrib import admin
 from django.urls import re_path as path
 from board.views.index import IndexView
@@ -26,4 +28,7 @@ urlpatterns = [
     path(r'^status/?$', StatusView.as_view()),
     path(r'^reply/?$', ReplyView.as_view()),
     path(r'^answer_reply/?$', AnswerReplyView.as_view()),
+    path(r'^promote/?$', PromoteView.as_view()),
+    path(r'^is_admin/?$', IsAdminView.as_view()),
+
 ]
