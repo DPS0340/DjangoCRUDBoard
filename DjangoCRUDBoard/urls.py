@@ -20,6 +20,7 @@ urlpatterns = [
     path(r'^admin/?$', admin.site.urls),
     path(r'^register/?$', UserView.as_view()),
     path(r'^delete_user/?$', UserView.as_view()),
+    path(r'^modify_user/?$', UserView.as_view()),
     path(r'^login/?$', LoginView.as_view()),
     path(r'^logout/?$', LogoutView.as_view()),
     path(r'^post/?$', PostView.as_view()),
