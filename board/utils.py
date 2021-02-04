@@ -5,6 +5,7 @@ import jwt
 import sys
 sys.path.append("..")
 from DjangoCRUDBoard.settings import SECRET_KEY, JWT_ALGORITHM
+from urllib import parse
 
 
 # 딕셔너리를 JSON으로 전송하는 헬퍼 함수
@@ -35,3 +36,18 @@ def delete_jwt_param(session, *args):
     decoded = decode_jwt(session)
     session['JWT_TOKEN'] = encode_jwt(dict(filter(lambda x: x not in args, decoded)))
     return True
+
+# request.body로 받아왔을때 binary를 dict로 변환하는 함수
+def byte_to_dict(data):
+    body_unicode = data.decode('utf-8')
+    body = body_unicode.replace("&", "=")
+    body_list = body.split("=")
+    body_key = []
+    body_value = []
+    for i in range(len(body_list)):
+        if i % 2 == 0:
+            body_key.append(body_list[i])
+        else:
+            body_value.append(parse.unquote(body_list[i]))
+    dict_body = dict(zip(body_key, body_value))
+    return dict_body

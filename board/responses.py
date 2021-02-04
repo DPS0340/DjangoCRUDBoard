@@ -20,6 +20,11 @@ deleteUserSucceed = {
     'status': 200,
     'comment': 'delete user succeed'
 }
+modifyUserSucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'modify user succeed'
+}
 userAlreadyRegistered = {
     'success': False,
     'status': 403,
@@ -104,6 +109,11 @@ illegalArgument = {
     'status': 400,
     'comment': 'Illegal argument'
 }
+illegalModifyArgument = {
+    'success': False,
+    'status': 400,
+    'comment': 'Illegal modify argument'
+}
 postRequired = {
     'success': False,
     'status': 400,
@@ -143,11 +153,6 @@ answerReplySucceed = {
     'success': True,
     'status': 200,
     'comment': 'AnswerReply request succeed'
-}
-deleteAnsreplySucceed = {
-    'success': True,
-    'status': 200,
-    'comment': 'delete answerreply succeed'
 }
 AnsDoesNotMatch = {
     'success': False,
