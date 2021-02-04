@@ -75,15 +75,11 @@ postSucceed = {
     'status': 200,
     'comment': 'Post request succeed'
 }
-
-
-def getSucceedFunc(field): return {
+getSucceedFunc = lambda field: {
     'success': True,
     'status': 200,
     'comment': f'obtaining {field} succeed'
 }
-
-
 boardRequired = {
     'success': False,
     'status': 400,
@@ -153,16 +149,6 @@ answerReplySucceed = {
     'success': True,
     'status': 200,
     'comment': 'AnswerReply request succeed'
-}
-deleteAnsreplySucceed = {
-    'success': True,
-    'status': 200,
-    'comment': 'delete answerreply succeed'
-}
-AnsDoesNotMatch = {
-    'success': False,
-    'status': 400,
-    'comment': 'does not match the author'
 }
 promoteSucceed = {
     'success': True,
