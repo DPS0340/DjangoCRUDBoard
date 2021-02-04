@@ -1,5 +1,5 @@
 from ..responses import *
-from ..utils import send_json, pop_args
+from ..utils import send_json, pop_args, byte_to_dict
 from ..models import Post, User, Reply, AnswerReply
 from ..decorators import login_required
 from ..utils import decode_jwt
@@ -9,21 +9,6 @@ from urllib import parse
 import json
 
 # 대댓글 TODO
-
-
-def byte_to_dict(data):
-    body_unicode = data.decode('utf-8')
-    body = body_unicode.replace("&", "=")
-    body_list = body.split("=")
-    body_key = []
-    body_value = []
-    for i in range(len(body_list)):
-        if i % 2 == 0:
-            body_key.append(body_list[i])
-        else:
-            body_value.append(parse.unquote(body_list[i]))
-    dict_body = dict(zip(body_key, body_value))
-    return dict_body
 
 
 class AnswerReplyView(View):
