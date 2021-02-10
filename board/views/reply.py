@@ -32,8 +32,8 @@ class ReplyView(View):
 
         for reply in replys:
             pk = reply['pk']
-            replies = AnswerReply.objects.filter(reply=pk)
-            answer_reply_length = len(replies)
+            answer_replies = AnswerReply.objects.filter(reply=pk)
+            answer_reply_length = len(answer_replies)
             reply['answer_reply_length'] = answer_reply_length
         
         data['data'] = replys
