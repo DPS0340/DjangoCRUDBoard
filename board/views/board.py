@@ -1,6 +1,6 @@
 from ..responses import *
 from ..utils import send_json
-from ..models import Board
+from ..models import Board, Post
 from ..decorators import login_required
 from django.views import View
 from django.core.serializers import serialize
@@ -30,6 +30,11 @@ class BoardView(View):
                     .order_by('-id')[:board_num]
                 )
             )
+            for board in boards:
+                pk = board['pk']
+                posts = Post.objects.filter(reply=pk)
+                post_length = len(posts)
+                board['post_length'] = post_length
             data['data'] = boards
             return send_json(data)
         except:
