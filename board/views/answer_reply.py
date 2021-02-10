@@ -41,8 +41,14 @@ class AnswerReplyView(View):
         session = request.session      # 접속 유저중 특정 유저를 인식
         decoded = decode_jwt(session)  # 암호화 해독
         userid = decoded['userid']
-        reply = Reply.objects.filter(pk=dic['pk'])[0]
-        author = User.objects.filter(id=userid)[0]
+        reply = Reply.objects.filter(pk=dic['pk'])
+        if len(reply) == 0:
+            return send_json(replyDoesNotExists)
+        reply = reply[0]
+        author = User.objects.filter(id=userid)
+        if len(author) == 0:
+            return send_json(AnsDoesNotMatch)
+        author = author[0]
         AnswerReply.objects.create(reply=reply, author=author,
                                    content=dic['content'])
         data = answerReplySucceed
