@@ -1,5 +1,6 @@
 from django.views import View
 from ..responses import *
+from ..models import User
 from ..utils import decode_jwt, send_json, encode_jwt
 from django.contrib.auth import authenticate
 
@@ -17,7 +18,7 @@ class LoginView(View):
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is None:
             return send_json(userDoesNotMatch)
-        encoded = encode_jwt({**prev_dic, 'userid': user.id})
+        encoded = encode_jwt({**prev_dic, 'userid': user.pk})
         session['JWT_TOKEN'] = encoded
         data = userLogin
         return send_json(data)
@@ -30,6 +31,11 @@ class LoginView(View):
             prev_dic = {}
         if 'userid' in prev_dic:
             data = userAlreadyLogin
+            user = User.objects.filter(pk=prev_dic['userid'])
+            if len(user) == 0:
+                return send_json(data)
+            user = user[0]
+            data['userid'] = user.id
         else:
             data = loginRequired
         return send_json(data)

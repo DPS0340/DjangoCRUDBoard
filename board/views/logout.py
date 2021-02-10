@@ -18,9 +18,8 @@ class LogoutView(View):
             User.objects.get(id=decoded['userid'])
         except User.DoesNotExist:
             exists = False
-
+        delete_jwt_param(session, 'userid') 
         if exists:
-            delete_jwt_param(session, 'userid')
             data = userLogout
         else:
             data = userDoesNotExist
