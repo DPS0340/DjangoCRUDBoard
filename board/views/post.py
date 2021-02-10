@@ -1,6 +1,6 @@
 from ..responses import *
 from ..utils import send_json, pop_args
-from ..models import Post, Board, User
+from ..models import Post, Board, User, Reply
 from ..decorators import login_required
 from ..utils import decode_jwt
 from django.views import View
@@ -20,15 +20,21 @@ class PostView(View):
         post_num = 10
         if "num" in request.GET:
             post_num = int(request.GET["num"])
+        post_obj = Post.objects.filter(board=board).order_by('-id')[:post_num]
+        for post in post_obj:
+            pk = post['pk']
+            replies = Reply.objects.filter(post=pk)
+            reply_length = len(replies)
+            post['reply_length'] = reply_length
         posts = json.loads(
             serialize(
                 "json",
-                Post.objects
-                .filter(board=board)
-                .order_by('-id')[:post_num]
+                post_obj
             )
         )
+            
         data['data'] = posts
+        data['reply_length'] = post_obj
         return send_json(data)
 
     @login_required
