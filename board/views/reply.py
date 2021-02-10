@@ -1,6 +1,6 @@
 from ..responses import *
 from ..utils import send_json, pop_args
-from ..models import User, Post, Reply
+from ..models import AnswerReply, User, Post, Reply
 from ..decorators import login_required
 from ..utils import decode_jwt
 from django.views import View
@@ -29,6 +29,13 @@ class ReplyView(View):
                 .order_by('-id')  # 댓글은 오름차순
             )
         )
+
+        for reply in replys:
+            pk = reply['pk']
+            replies = AnswerReply.objects.filter(reply=pk)
+            answer_reply_length = len(replies)
+            reply['answer_reply_length'] = answer_reply_length
+        
         data['data'] = replys
         return send_json(data)
 

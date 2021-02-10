@@ -22,17 +22,17 @@ class PostView(View):
             post_num = int(request.GET["num"])
             
         post_obj = Post.objects.filter(board=board).order_by('-id')[:post_num]
-        for post in post_obj:
-            pk = post['pk']
-            replies = Reply.objects.filter(post=pk)
-            reply_length = len(replies)
-            post['reply_length'] = reply_length
         posts = json.loads(
             serialize(
                 "json",
                 post_obj
             )
         )
+        for post in posts:
+            pk = post['pk']
+            replies = Reply.objects.filter(post=pk)
+            reply_length = len(replies)
+            post['reply_length'] = reply_length
 
         data['data'] = posts
         return send_json(data)
