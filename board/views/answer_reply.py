@@ -26,7 +26,7 @@ class AnswerReplyView(View):
             serialize(
                 "json",
                 AnswerReply.objects.filter(reply=reply)
-                .order_by('id')  # 대댓글 오름차순
+                .order_by('-id')  # 대댓글 오름차순
             )
         )
         data['data'] = answerreplys  # 'data' 키에 들어가는 값의 자료형이 딕션?
