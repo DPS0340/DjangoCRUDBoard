@@ -18,10 +18,10 @@ class BoardView(View):
 
         # boards = json.loads(
         #     serialize("json", Board.objects.all()))
+        board_num = 10
+        if "num" in request.GET:
+            board_num = int(request.GET["num"])
         try:
-            board_num = 10
-            if "num" in request.GET:
-                board_num = int(request.GET["num"])
             boards = json.loads(
                 serialize(
                     "json",
@@ -30,17 +30,15 @@ class BoardView(View):
                     .order_by('-id')[:board_num]
                 )
             )
-            for board in boards:
-                pk = board['pk']
-                posts = Post.objects.filter(reply=pk)
-                post_length = len(posts)
-                board['post_length'] = post_length
-            data['data'] = boards
-            return send_json(data)
         except:
             boards = json.loads(serialize("json", Board.objects.all()))
-            data['data'] = boards
-            return send_json(data)
+        for board in boards:
+            pk = board['pk']
+            posts = Post.objects.filter(board=pk)
+            post_length = len(posts)
+            board['post_length'] = post_length
+        data['data'] = boards
+        return send_json(data)
 
     @login_required
     def post(self, request):
