@@ -26,7 +26,7 @@ JWT_ALGORITHM = "HS256"
 APPEND_SLASH = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True if os.environ.get('BOARD_DEBUG') else False
 
 ALLOWED_HOSTS = ['*']
 CORS_REPLACE_HTTPS_REFERER = True
