@@ -41,8 +41,14 @@ class ReplyView(View):
         session = request.session
         decoded = decode_jwt(session)
         userid = decoded['userid']
-        post = Post.objects.filter(pk=dic['pk'])[0]
-        author = User.objects.filter(id=userid)[0]
+        post = Post.objects.filter(pk=dic['pk'])
+        if len(post) == 0:
+            return send_json(postDoesNotExists)
+        post = post[0]
+        author = User.objects.filter(id=userid)
+        if len(author) == 0:
+            return send_json(AnsDoesNotMatch)
+        author = author[0]
         Reply.objects.create(post=post, author=author, content=dic['content'])
         data = replySucceed
         return send_json(data)
