@@ -40,8 +40,14 @@ class PostView(View):
         session = request.session
         decoded = decode_jwt(session)
         userid = decoded['userid']
-        board = Board.objects.filter(pk=dic['pk'])[0]
-        author = User.objects.filter(id=userid)[0]
+        board = Board.objects.filter(pk=dic['pk'])
+        if len(board) == 0:
+            return send_json(boardDoesNotExists)
+        board = board[0]
+        author = User.objects.filter(id=userid)
+        if len(author) == 0:
+            return send_json(AnsDoesNotMatch)
+        author = author[0]
         Post.objects.create(title=dic['title'], board=board, author=author, content=dic['content'])
         data = postSucceed
         return send_json(data)
