@@ -19,6 +19,7 @@ class Post(models.Model):
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
+    writeAt = models.DateTimeField(auto_now_add=True)
 
 # 댓글 모델
 # 글, 댓글쓴이, 내용을 가진다
@@ -26,6 +27,7 @@ class Reply(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
+    writeAt = models.DateTimeField(auto_now_add=True)
 
 # 대댓글 모델
 # 댓글, 대댓글 쓴이, 내용을 가진다
@@ -33,3 +35,4 @@ class AnswerReply(models.Model):
     reply = models.ForeignKey(Reply, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
+    writeAt = models.DateTimeField(auto_now_add=True)
