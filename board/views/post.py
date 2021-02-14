@@ -21,7 +21,7 @@ class PostView(View):
         if "num" in request.GET:
             post_num = int(request.GET["num"])
             
-        post_obj = Post.objects.filter(board=board).order_by('-id')[:post_num]
+        post_obj = Post.objects.filter(board=board).order_by('pk')[:post_num]
         posts = json.loads(
             serialize(
                 "json",

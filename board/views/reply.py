@@ -26,7 +26,7 @@ class ReplyView(View):
             serialize(
                 "json",
                 Reply.objects.filter(post=post)
-                .order_by('-id')  # 댓글은 오름차순
+                .order_by('pk')  # 댓글은 오름차순
             )
         )
 
