@@ -66,6 +66,23 @@ class ReplyView(View):
         return send_json(data)
 
     @login_required
+    def delete(self, request):
+        if 'pk' not in byte_to_dict(request.body):
+            return send_json(illegalArgument)
+        else:
+            user_pk = byte_to_dict(request.body)  # 대댓글 pk
+            answer = AnswerReply.objects.get(pk=user_pk['pk'])
+        session = request.session      # 접속 유저중 특정 유저를 인식
+        decoded = decode_jwt(session)
+        userid = decoded['userid']  # 로그인한 유저의 pk
+
+        if userid == answer.author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
+            answer.delete()
+            return send_json(deleteAnsreplySucceed)
+        else:
+            return send_json(AnsDoesNotMatch)
+
+    @login_required
     def put(self, request):
         dic = byte_to_dict(request.body)
         if dic.get('pk') is None or dic.get('content') is None:
