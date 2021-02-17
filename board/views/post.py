@@ -1,5 +1,5 @@
 from ..responses import *
-from ..utils import send_json, pop_args
+from ..utils import get_user, send_json, pop_args
 from ..models import Post, Board, User, Reply
 from ..decorators import login_required
 from ..utils import decode_jwt
@@ -29,6 +29,9 @@ class PostView(View):
             )
         )
         for post in posts:
+            author_pk = post['fields']['author']
+            author = User.objects.filter(pk=author_pk)
+            post['fields']['author'] = get_user(author)['data']
             pk = post['pk']
             replies = Reply.objects.filter(post=pk)
             reply_length = len(replies)

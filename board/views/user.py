@@ -7,7 +7,6 @@ from django.views import View
 import sys
 sys.path.append("../../")
 import json
-from django.core.serializers import serialize
 from DjangoCRUDBoard import settings
 
 class UserView(View):

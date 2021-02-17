@@ -8,7 +8,7 @@ from DjangoCRUDBoard.settings import SECRET_KEY, JWT_ALGORITHM
 from urllib import parse
 from .responses import *
 from .models import User, Default_User
-from json import serialize
+from django.core.serializers import serialize
 
 
 # 딕셔너리를 JSON으로 전송하는 헬퍼 함수

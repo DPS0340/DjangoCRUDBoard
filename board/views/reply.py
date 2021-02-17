@@ -1,5 +1,5 @@
 from ..responses import *
-from ..utils import send_json, pop_args
+from ..utils import get_user, send_json, pop_args
 from ..models import AnswerReply, User, Post, Reply
 from ..decorators import login_required
 from ..utils import decode_jwt
@@ -31,6 +31,9 @@ class ReplyView(View):
         )
 
         for reply in replies:
+            author_pk = reply['fields']['author']
+            author = User.objects.filter(pk=author_pk)
+            reply['fields']['author'] = get_user(author)['data']
             pk = reply['pk']
             answer_replies = AnswerReply.objects.filter(reply=pk)
             answer_reply_length = len(answer_replies)
