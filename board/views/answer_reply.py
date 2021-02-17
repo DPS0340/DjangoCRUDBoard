@@ -77,7 +77,8 @@ class AnswerReplyView(View):
             return send_json(deleteAnsreplySucceed)
         else:
             return send_json(AnsDoesNotMatch)
-        
+    
+    @login_required
     def put(self, request):
         dic = byte_to_dict(request.body)
         if dic.get('pk') is None or dic.get('content') is None:
