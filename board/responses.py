@@ -164,6 +164,11 @@ deleteAnsreplySucceed = {
     'status': 200,
     'comment': 'delete AnswerReply succeed'
 }
+changeAnswerReplySucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'change AnswerReply succeed'
+}
 AnsDoesNotMatch = {
     'success': False,
     'status': 400,
