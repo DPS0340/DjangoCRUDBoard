@@ -5,9 +5,30 @@ from django.contrib.auth.hashers import make_password
 from django.views import View
 import sys
 sys.path.append("../../")
+import json
+from django.core.serializers import serialize
 from DjangoCRUDBoard import settings
 
 class UserView(View):
+    def get(self, request):
+        keys = ['username']
+        dic = pop_args(request.GET, *keys)
+        if None in dic.values():
+            return send_json(illegalArgument)
+        filtered = User.objects.filter(username=dic['username'])
+        if filtered.count() != 1:
+            return send_json(userDoesNotMatch)
+        user = filtered[0]
+        posts = json.loads(
+            serialize(
+                "json",
+                user
+            )
+        )
+        result = getSucceedFunc('user')
+        result['data'] = posts
+        return send_json(result)
+
     def post(self, request):
         keys = ['username', 'email', 'password']
         dic = pop_args(request.POST, *keys)
