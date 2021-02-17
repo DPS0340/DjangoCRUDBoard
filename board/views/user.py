@@ -15,18 +15,17 @@ class UserView(View):
         dic = pop_args(request.GET, *keys)
         if None in dic.values():
             return send_json(illegalArgument)
-        filtered = User.objects.filter(username=dic['username'])
-        if filtered.count() != 1:
+        user = User.objects.filter(username=dic['username'])
+        if user.count() != 1:
             return send_json(userDoesNotMatch)
-        user = filtered[0]
-        posts = json.loads(
+        user_dict = json.loads(
             serialize(
                 "json",
                 user
             )
         )
         result = getSucceedFunc('user')
-        result['data'] = posts
+        result['data'] = user_dict[0]
         return send_json(result)
 
     def post(self, request):
