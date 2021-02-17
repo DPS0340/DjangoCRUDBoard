@@ -56,6 +56,8 @@ class ReplyView(View):
         if len(author) == 0:
             return send_json(AnsDoesNotMatch)
         author = author[0]
-        Reply.objects.create(post=post, author=author, content=dic['content'])
+        unique_number = len(Reply.objects.filter(post=post)) + 1
+        Reply.objects.create(post=post, author=author,
+                             content=dic['content'], unique_number=unique_number)
         data = replySucceed
         return send_json(data)
