@@ -32,7 +32,6 @@ class ReplyView(View):
 
         for reply in replies:
             pk = reply['pk']
-            del reply['pk']
             answer_replies = AnswerReply.objects.filter(reply=pk)
             answer_reply_length = len(answer_replies)
             reply['answer_reply_length'] = answer_reply_length

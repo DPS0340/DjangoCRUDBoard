@@ -30,8 +30,6 @@ class AnswerReplyView(View):
             )
         )
 
-        for answerReply in answerReplies:
-            del answerReply['pk']
         data['data'] = answerReplies
         return send_json(data)
 
