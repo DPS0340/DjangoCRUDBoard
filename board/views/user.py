@@ -1,5 +1,5 @@
 from ..responses import *
-from ..utils import send_json, pop_args, byte_to_dict
+from ..utils import send_json, pop_args, byte_to_dict, get_user
 from django.contrib.auth.models import User as Default_User
 from ..models import User
 from django.contrib.auth.hashers import make_password
@@ -16,29 +16,8 @@ class UserView(View):
         dic = pop_args(request.GET, *keys)
         if None in dic.values():
             return send_json(illegalArgument)
-        user = User.objects.filter(username=dic['username'])
-        if user.count() != 1:
-            return send_json(userDoesNotMatch)
-        user_dict = json.loads(
-            serialize(
-                "json",
-                user
-            )
-        )
-        user = user[0]
-        default_user = Default_User.objects.filter(pk=user.pk)
-        default_user_dict = json.loads(
-            serialize(
-                "json",
-                default_user
-            )
-        )
-        default_user_dict = default_user_dict[0]
-        del default_user_dict['fields']['password']
-        user_dict = user_dict[0]
-        user_dict.update(default_user_dict)
-        result = getSucceedFunc('user')
-        result['data'] = user_dict
+        users = User.objects.filter(username=dic['username'])
+        result = get_user(users)
         return send_json(result)
 
     def post(self, request):
