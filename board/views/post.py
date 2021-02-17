@@ -54,6 +54,8 @@ class PostView(View):
         if len(author) == 0:
             return send_json(AnsDoesNotMatch)
         author = author[0]
-        Post.objects.create(title=dic['title'], board=board, author=author, content=dic['content'])
+        unique_number = len(Post.objects.filter(board=board)) + 1
+        Post.objects.create(title=dic['title'], board=board, author=author,
+                            content=dic['content'], unique_number=unique_number)
         data = postSucceed
         return send_json(data)

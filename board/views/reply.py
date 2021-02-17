@@ -22,7 +22,7 @@ class ReplyView(View):
         except Post.DoesNotExist:
             return send_json(postDoesNotExists)
 
-        replys = json.loads(
+        replies = json.loads(
             serialize(
                 "json",
                 Reply.objects.filter(post=post)
@@ -30,13 +30,13 @@ class ReplyView(View):
             )
         )
 
-        for reply in replys:
+        for reply in replies:
             pk = reply['pk']
             answer_replies = AnswerReply.objects.filter(reply=pk)
             answer_reply_length = len(answer_replies)
             reply['answer_reply_length'] = answer_reply_length
         
-        data['data'] = replys
+        data['data'] = replies
         return send_json(data)
 
     @login_required  # 로그인 된 사람만 댓글을 쓸 수 있음
