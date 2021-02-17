@@ -169,6 +169,11 @@ changeAnswerReplySucceed = {
     'status': 200,
     'comment': 'change AnswerReply succeed'
 }
+changeReplySucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'change Reply succeed'
+}
 AnsDoesNotMatch = {
     'success': False,
     'status': 400,
