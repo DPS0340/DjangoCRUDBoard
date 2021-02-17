@@ -78,6 +78,6 @@ class PostView(View):
 
         if userid == filtered[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
             filtered.update(content=dic['content'])
-            return send_json(changeReplySucceed)
+            return send_json(changePostSucceed)
         else:
             return send_json(AnsDoesNotMatch)
