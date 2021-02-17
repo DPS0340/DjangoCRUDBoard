@@ -69,18 +69,18 @@ class PostView(View):
             return send_json(illegalArgument)
         else:
             dic = byte_to_dict(request.body)  # 대댓글 pk
-            filtered = Post.objects.get(pk=dic['pk'])
+            filtered = Post.objects.filter(pk=dic['pk'])
         if len(filtered) != 1:
-            return send_json(replyDoesNotExists)
+            return send_json(postDoesNotExists)
         session = request.session      # 접속 유저중 특정 유저를 인식
         decoded = decode_jwt(session)
         userid = decoded['userid']  # 로그인한 유저의 pk
 
-        if userid == dic[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
-            answer.delete()
-            return send_json(deleteAnsreplySucceed)
+        if userid == filtered[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
+            filtered.delete()
+            return send_json(deletePostSucceed)
         else:
-            return send_json(AnsDoesNotMatch)
+            return send_json(postDoesNotMatch)
 
     @login_required
     def put(self, request):
@@ -96,7 +96,7 @@ class PostView(View):
         userid = decoded['userid']  # 로그인한 유저의 pk
 
         if userid == filtered[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
-            filtered.update(content=dic['content'])
-            return send_json(changePostSucceed)
+            filtered.delete()
+            return send_json(deletePostSucceed)
         else:
-            return send_json(AnsDoesNotMatch)
+            return send_json(postDoesNotMatch)

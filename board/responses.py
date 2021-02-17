@@ -20,6 +20,16 @@ deleteUserSucceed = {
     'status': 200,
     'comment': 'delete user succeed'
 }
+deleteReplySucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'delete reply succeed'
+}
+deletePostSucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'delete post succeed'
+}
 modifyUserSucceed = {
     'success': True,
     'status': 200,
