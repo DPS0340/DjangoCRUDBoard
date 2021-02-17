@@ -149,6 +149,11 @@ replyDoesNotExists = {
     'status': 400,
     'comment': 'Reply does not exists'
 }
+answerReplyDoesNotExists = {
+    'success': False,
+    'status': 400,
+    'comment': 'AnswerReply does not exists'
+}
 answerReplySucceed = {
     'success': True,
     'status': 200,
