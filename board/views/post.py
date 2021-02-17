@@ -1,5 +1,5 @@
 from ..responses import *
-from ..utils import get_user, send_json, pop_args
+from ..utils import get_user, send_json, pop_args, byte_to_dict
 from ..models import Post, Board, User, Reply
 from ..decorators import login_required
 from ..utils import decode_jwt
@@ -62,3 +62,22 @@ class PostView(View):
                             content=dic['content'], unique_number=unique_number)
         data = postSucceed
         return send_json(data)
+
+    @login_required
+    def put(self, request):
+        dic = byte_to_dict(request.body)
+        if dic.get('pk') is None or dic.get('content') is None:
+            return send_json(illegalArgument)
+        else:
+            filtered = Post.objects.filter(pk=dic['pk'])
+        if len(filtered) != 1:
+            return send_json(replyDoesNotExists)
+        session = request.session      # 접속 유저중 특정 유저를 인식
+        decoded = decode_jwt(session)
+        userid = decoded['userid']  # 로그인한 유저의 pk
+
+        if userid == filtered[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
+            filtered.update(content=dic['content'])
+            return send_json(changeReplySucceed)
+        else:
+            return send_json(AnsDoesNotMatch)
