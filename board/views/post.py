@@ -21,7 +21,7 @@ class PostView(View):
         if "num" in request.GET:
             post_num = int(request.GET["num"])
             
-        post_obj = Post.objects.filter(board=board).order_by('pk')[:post_num]
+        post_obj = Post.objects.filter(board=board).order_by('unique_number')[:post_num]
         posts = json.loads(
             serialize(
                 "json",
@@ -30,6 +30,7 @@ class PostView(View):
         )
         for post in posts:
             pk = post['pk']
+            del post['pk']
             replies = Reply.objects.filter(post=pk)
             reply_length = len(replies)
             post['reply_length'] = reply_length

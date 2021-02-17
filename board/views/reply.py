@@ -26,12 +26,13 @@ class ReplyView(View):
             serialize(
                 "json",
                 Reply.objects.filter(post=post)
-                .order_by('pk')  # 댓글은 오름차순
+                .order_by('unique_number')  # 댓글은 오름차순
             )
         )
 
         for reply in replies:
             pk = reply['pk']
+            del reply['pk']
             answer_replies = AnswerReply.objects.filter(reply=pk)
             answer_reply_length = len(answer_replies)
             reply['answer_reply_length'] = answer_reply_length

@@ -26,9 +26,12 @@ class AnswerReplyView(View):
             serialize(
                 "json",
                 AnswerReply.objects.filter(reply=reply)
-                .order_by('pk')  # 대댓글 오름차순
+                .order_by('unique_number')  # 대댓글 오름차순
             )
         )
+
+        for answerReply in answerReplies:
+            del answerReply['pk']
         data['data'] = answerReplies
         return send_json(data)
 
