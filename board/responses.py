@@ -184,6 +184,16 @@ AnsDoesNotMatch = {
     'status': 400,
     'comment': 'does not match the author'
 }
+replyDoesNotMatch = {
+    'success': False,
+    'status': 400,
+    'comment': 'does not match the reply'
+}
+PostDoesNotMatch = {
+    'success': False,
+    'status': 400,
+    'comment': 'does not match the post'
+}
 promoteSucceed = {
     'success': True,
     'status': 200,
