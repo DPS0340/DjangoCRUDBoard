@@ -1,5 +1,5 @@
 from ..responses import *
-from ..utils import send_json, pop_args, byte_to_dict
+from ..utils import get_user, send_json, pop_args, byte_to_dict
 from ..models import Post, User, Reply, AnswerReply
 from ..decorators import login_required
 from ..utils import decode_jwt
@@ -29,6 +29,11 @@ class AnswerReplyView(View):
                 .order_by('unique_number')  # 대댓글 오름차순
             )
         )
+
+        for answerReply in answerReplies:
+            author_pk = answerReply['fields']['author']
+            author = User.objects.filter(pk=author_pk)
+            answerReply['fields']['author'] = get_user(author)['data']
 
         data['data'] = answerReplies
         return send_json(data)
