@@ -189,7 +189,7 @@ replyDoesNotMatch = {
     'status': 400,
     'comment': 'does not match the reply'
 }
-PostDoesNotMatch = {
+postDoesNotMatch = {
     'success': False,
     'status': 400,
     'comment': 'does not match the post'
