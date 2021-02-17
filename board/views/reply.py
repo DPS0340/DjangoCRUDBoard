@@ -22,21 +22,21 @@ class ReplyView(View):
         except Post.DoesNotExist:
             return send_json(postDoesNotExists)
 
-        replys = json.loads(
+        replies = json.loads(
             serialize(
                 "json",
                 Reply.objects.filter(post=post)
-                .order_by('pk')  # 댓글은 오름차순
+                .order_by('unique_number')  # 댓글은 오름차순
             )
         )
 
-        for reply in replys:
+        for reply in replies:
             pk = reply['pk']
             answer_replies = AnswerReply.objects.filter(reply=pk)
             answer_reply_length = len(answer_replies)
             reply['answer_reply_length'] = answer_reply_length
         
-        data['data'] = replys
+        data['data'] = replies
         return send_json(data)
 
     @login_required  # 로그인 된 사람만 댓글을 쓸 수 있음
@@ -56,6 +56,8 @@ class ReplyView(View):
         if len(author) == 0:
             return send_json(AnsDoesNotMatch)
         author = author[0]
-        Reply.objects.create(post=post, author=author, content=dic['content'])
+        unique_number = len(Reply.objects.filter(post=post)) + 1
+        Reply.objects.create(post=post, author=author,
+                             content=dic['content'], unique_number=unique_number)
         data = replySucceed
         return send_json(data)

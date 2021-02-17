@@ -21,7 +21,7 @@ class PostView(View):
         if "num" in request.GET:
             post_num = int(request.GET["num"])
             
-        post_obj = Post.objects.filter(board=board).order_by('pk')[:post_num]
+        post_obj = Post.objects.filter(board=board).order_by('unique_number')[:post_num]
         posts = json.loads(
             serialize(
                 "json",
@@ -54,6 +54,8 @@ class PostView(View):
         if len(author) == 0:
             return send_json(AnsDoesNotMatch)
         author = author[0]
-        Post.objects.create(title=dic['title'], board=board, author=author, content=dic['content'])
+        unique_number = len(Post.objects.filter(board=board)) + 1
+        Post.objects.create(title=dic['title'], board=board, author=author,
+                            content=dic['content'], unique_number=unique_number)
         data = postSucceed
         return send_json(data)
