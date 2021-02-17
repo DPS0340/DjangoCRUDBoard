@@ -20,6 +20,16 @@ deleteUserSucceed = {
     'status': 200,
     'comment': 'delete user succeed'
 }
+deleteReplySucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'delete reply succeed'
+}
+deletePostSucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'delete post succeed'
+}
 modifyUserSucceed = {
     'success': True,
     'status': 200,
@@ -149,6 +159,11 @@ replyDoesNotExists = {
     'status': 400,
     'comment': 'Reply does not exists'
 }
+answerReplyDoesNotExists = {
+    'success': False,
+    'status': 400,
+    'comment': 'AnswerReply does not exists'
+}
 answerReplySucceed = {
     'success': True,
     'status': 200,
@@ -159,10 +174,35 @@ deleteAnsreplySucceed = {
     'status': 200,
     'comment': 'delete AnswerReply succeed'
 }
+changeAnswerReplySucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'change AnswerReply succeed'
+}
+changeReplySucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'change Reply succeed'
+}
+changePostSucceed = {
+    'success': True,
+    'status': 200,
+    'comment': 'change Post succeed'
+}
 AnsDoesNotMatch = {
     'success': False,
     'status': 400,
     'comment': 'does not match the author'
+}
+replyDoesNotMatch = {
+    'success': False,
+    'status': 400,
+    'comment': 'does not match the reply'
+}
+postDoesNotMatch = {
+    'success': False,
+    'status': 400,
+    'comment': 'does not match the post'
 }
 promoteSucceed = {
     'success': True,
