@@ -30,12 +30,15 @@ class LoginView(View):
         else:
             prev_dic = {}
         if 'userid' in prev_dic:
-            data = userAlreadyLogin
             user = User.objects.filter(pk=prev_dic['userid'])
             if len(user) == 0:
+                data = userDoesNotExist
                 return send_json(data)
             user = user[0]
+            data = userAlreadyLogin
+            # 프론트 요청으로 userid 암호화하지 않고 넘김
             data['userid'] = user.id
+            return send_json(data)
         else:
             data = loginRequired
         return send_json(data)

@@ -46,9 +46,10 @@ registerSucceed = {
     'comment': 'register succeed'
 }
 userAlreadyLogin = {
-    'success': False,
-    'status': 400,
-    'comment': 'User has already logged in'
+    'success': True,
+    'status': 200,
+    'comment': 'User has already logged in',
+    'is_login': True
 }
 userLogin = {
     'success': True,
@@ -76,9 +77,10 @@ userLogout = {
     'comment': 'Logout succeed'
 }
 loginRequired = {
-    'success': False,
-    'status': 401,
-    'comment': 'not Authorized'
+    'success': True,
+    'status': 200,
+    'comment': 'login required',
+    'is_login': False
 }
 postSucceed = {
     'success': True,
