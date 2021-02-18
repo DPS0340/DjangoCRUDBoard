@@ -21,13 +21,20 @@ ENV DJANGO_WSGI_MODULE DjangoCRUDBoard.wsgi
 
 ENV PORT 8000
 
-RUN echo "Starting $NAME as `whoami`"
+RUN echo "Starting $NAME as $(whoami)"
 
 WORKDIR /code
-ADD . /code              
+ADD . .
 
 RUN pip install --upgrade pip
 RUN pip install pipenv
 RUN pipenv install
 
-ENTRYPOINT ["/code/bin/gunicorn_start"]
+# RUN chown root board/migrations
+# RUN chown root ./
+
+# RUN pipenv run python manage.py makemigrations
+# RUN pipenv run python manage.py makemigrations board
+# RUN pipenv run python manage.py migrate
+
+# ENTRYPOINT ["/code/bin/gunicorn_start"]

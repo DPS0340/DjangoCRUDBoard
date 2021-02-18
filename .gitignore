@@ -8,3 +8,4 @@ venv
 !.elasticbeanstalk/*.global.yml
 /nginx/logs/nginx-access.log
 /nginx/logs/nginx-error.log
+/nginx/logs/django.log

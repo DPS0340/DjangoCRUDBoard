@@ -8,15 +8,39 @@ services:
   gunicorn-backend:
     container_name: gunicorn-backend
     build: .
-    command: gunicorn app.wsgi:application --bind 0.0.0.0:8000
+    command:
+      - "pipenv run python /code/manage.py makemigrations && pipenv run python /code/manage.py makemigrations board && pipenv run python /code/manage.py migrate && /code/bin/gunicorn_start"
     volumes:
       - .:/code
+      - /usr/local/bin
     networks:
       - app-tier
     expose:
       - "8000"
     # ports:
     #   - "8000:8000"
+    # depends_on:
+    #   - migration
+
+  # migration:
+  #     image: app
+  #     command: sh -c "pipenv run python manage.py migrate"
+  #     volumes:
+  #         - .:/code
+  #     # links:
+  #     #     - mysql_db
+  #     depends_on:
+  #         - make_migrations
+  
+  # make_migrations:
+  #     image: app
+  #     command: sh -c "pipenv run python manage.py makemigrations"
+  #     volumes:
+  #         - .:/code
+  #     # links:
+  #     #     - mysql_db
+  #     # depends_on:
+  #     #     - mysql_db
       
   nginx-backend:
     container_name: nginx-backend

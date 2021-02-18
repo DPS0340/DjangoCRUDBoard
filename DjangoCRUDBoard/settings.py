@@ -51,26 +51,25 @@ INSTALLED_APPS = [
     'corsheaders'
 ]
 
-if DEBUG == False:
-    pass
-    # LOGGING = {
-    #     'version': 1,
-    #     'disable_existing_loggers': False,
-    #     'handlers': {
-    #         'file': {
-    #             'level': 'DEBUG',
-    #             'class': 'logging.FileHandler',
-    #             'filename': '/var/log/app-logs/django.log',
-    #         },
-    #     },
-    #     'loggers': {
-    #         'django': {
-    #             'handlers': ['file'],
-    #             'level': 'DEBUG',
-    #             'propagate': True,
-    #         },
-    #     },
-    # }
+# if DEBUG == False:
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': './nginx/logs/django.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 
 MIDDLEWARE = [
