@@ -8,11 +8,8 @@ services:
   gunicorn-backend:
     container_name: gunicorn-backend
     build: .
-    command:
-      - "pipenv run python /code/manage.py makemigrations && pipenv run python /code/manage.py makemigrations board && pipenv run python /code/manage.py migrate && /code/bin/gunicorn_start"
     volumes:
       - .:/code
-      - /usr/local/bin
     networks:
       - app-tier
     expose:

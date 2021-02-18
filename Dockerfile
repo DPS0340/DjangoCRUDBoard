@@ -33,8 +33,4 @@ RUN pipenv install
 # RUN chown root board/migrations
 # RUN chown root ./
 
-# RUN pipenv run python manage.py makemigrations
-# RUN pipenv run python manage.py makemigrations board
-# RUN pipenv run python manage.py migrate
-
-# ENTRYPOINT ["/code/bin/gunicorn_start"]
+ENTRYPOINT ["sh", "/code/bin/gunicorn_start"]

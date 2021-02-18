@@ -27,6 +27,10 @@ test -d $RUNDIR || mkdir -p $RUNDIR
 
 cd $PARENT_PATH
 
+pipenv run python manage.py makemigrations
+pipenv run python manage.py makemigrations board
+pipenv run python manage.py migrate
+
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
 # pipenv 사용
