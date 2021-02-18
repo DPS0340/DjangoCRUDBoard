@@ -3,8 +3,57 @@ version: '3'
 networks:
   app-tier:
     driver: bridge
+  db-tier:
+    driver: bridge
+  prometheus-tier:
+    driver: bridge
 
 services:
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 30
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - ./data/prometheus:/prometheus
+    networks:
+      - app-tier
+      - db-tier
+      - prometheus-tier
+    expose:
+      - "9090"
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    links:
+      - prometheus:prometheus
+    networks:
+      - prometheus-tier
+    ports:
+      - 3000:3000
+    environment:
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+  database:
+    image: "postgres"
+    environment:
+      - POSTGRES_USER=django
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=djangocrudboard
+    networks:
+      - db-tier
+    expose:
+      - "5432"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data/
+
   gunicorn-backend:
     container_name: gunicorn-backend
     build: .
@@ -12,32 +61,11 @@ services:
       - .:/code
     networks:
       - app-tier
+      - db-tier
     expose:
       - "8000"
-    # ports:
-    #   - "8000:8000"
-    # depends_on:
-    #   - migration
-
-  # migration:
-  #     image: app
-  #     command: sh -c "pipenv run python manage.py migrate"
-  #     volumes:
-  #         - .:/code
-  #     # links:
-  #     #     - mysql_db
-  #     depends_on:
-  #         - make_migrations
-  
-  # make_migrations:
-  #     image: app
-  #     command: sh -c "pipenv run python manage.py makemigrations"
-  #     volumes:
-  #         - .:/code
-  #     # links:
-  #     #     - mysql_db
-  #     # depends_on:
-  #     #     - mysql_db
+    depends_on:
+      - database
       
   nginx-backend:
     container_name: nginx-backend

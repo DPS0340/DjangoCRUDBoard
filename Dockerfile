@@ -30,6 +30,9 @@ RUN pip install --upgrade pip
 RUN pip install pipenv
 RUN pipenv install
 
+RUN apt-get update \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y netcat
+
 # RUN chown root board/migrations
 # RUN chown root ./
 
