@@ -1,8 +1,37 @@
 version: '3'
 
+networks:
+  app-tier:
+    driver: bridge
+
 services:
-  web:
+  gunicorn-backend:
+    container_name: gunicorn-backend
     build: .
-    command: pipenv run python manage.py runserver 0.0.0.0:80
+    command: gunicorn app.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/code
+    networks:
+      - app-tier
+    expose:
+      - "8000"
+    # ports:
+    #   - "8000:8000"
+      
+  nginx-backend:
+    container_name: nginx-backend
+    image: nginx:latest
+    volumes:
+    - ./nginx/nginx-app.conf:/etc/nginx/conf.d/default.conf
+    - ./nginx/logs:/var/DjangoCRUDBoard-logs
+    expose:
+    - "80"
     ports:
-      - "80:80"
+    - "80:80"
+    networks:
+    - app-tier
+    depends_on:
+    - gunicorn-backend
+    environment:
+    - NGINX_HOST=0.0.0.0
+    - NGINX_PORT=80

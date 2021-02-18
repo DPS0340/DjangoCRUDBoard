@@ -30,6 +30,4 @@ RUN pip install --upgrade pip
 RUN pip install pipenv
 RUN pipenv install
 
-EXPOSE 8000                   
-
-ENTRYPOINT ["./bin/gunicorn_start"]
+ENTRYPOINT ["/code/bin/gunicorn_start"]
