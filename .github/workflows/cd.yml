@@ -2,6 +2,7 @@ name: CI
 on:
   push:
     branches:
+    - master
     - feature-dockerize
     
 jobs:
@@ -59,8 +60,3 @@ jobs:
       uses: actions/checkout@v2
     - name: Triggering AWS codedeploy
       uses: webfactory/create-aws-codedeploy-deployment@v0.2.2
-    - uses: peter-evans/commit-comment@v1
-      with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-              @${{ github.actor }} this was deployed as [${{ steps.deploy.outputs.deploymentId }}](https://console.aws.amazon.com/codesuite/codedeploy/deployments/${{ steps.deploy.outputs.deploymentId }}?region=ap-northeast-2) to group `${{ steps.deploy.outputs.deploymentGroupName }}`.
