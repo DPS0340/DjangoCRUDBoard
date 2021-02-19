@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REPOSITORY=/home/ec2-user/app
+REPOSITORY=/home/ubuntu/app
 
 cd $REPOSITORY
 
