@@ -22,7 +22,7 @@ branch_config:
     wip\/.*: ~
 
     feature-dockerize:
-        deploymentGroupName: production
+        deploymentGroupName: djangocrudboard-group
         deploymentGroupConfig:
             serviceRoleArn: arn:aws:iam::058718939924:role/codedeploy-role
         deploymentConfig:
