@@ -50,6 +50,7 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     environment:
+      - PGDATA=/var/lib/postgresql/data/django/
       - POSTGRES_USER=django
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=djangocrudboard
