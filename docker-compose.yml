@@ -1,8 +1,97 @@
 version: '3'
 
+networks:
+  app-tier:
+    driver: bridge
+  db-tier:
+    driver: bridge
+  prometheus-tier:
+    driver: bridge
+
 services:
-  web:
-    build: .
-    command: pipenv run python manage.py runserver 0.0.0.0:80
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 30
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - ./data/prometheus:/prometheus
+    networks:
+      - app-tier
+      - db-tier
+      - prometheus-tier
+    expose:
+      - "9090"
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    links:
+      - prometheus:prometheus
+    networks:
+      - prometheus-tier
     ports:
-      - "80:80"
+      - 3000:3000
+    environment:
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+  database:
+    image: "postgres"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    environment:
+      - PGDATA=/var/lib/postgresql/data/django/
+      - POSTGRES_USER=django
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=djangocrudboard
+    networks:
+      - db-tier
+    expose:
+      - "5432"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data/django/
+
+  gunicorn-backend:
+    container_name: gunicorn-backend
+    image: a891/djangocrudboard:latest
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    volumes:
+      - .:/code
+    networks:
+      - app-tier
+      - db-tier
+    expose:
+      - "8000"
+    depends_on:
+      - database
+      
+  nginx-backend:
+    container_name: nginx-backend
+    image: nginx:latest
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    volumes:
+    - ./nginx/nginx-app.conf:/etc/nginx/conf.d/default.conf
+    - ./nginx/logs:/var/DjangoCRUDBoard-logs
+    expose:
+    - "80"
+    ports:
+    - "80:80"
+    networks:
+    - app-tier
+    depends_on:
+    - gunicorn-backend
+    environment:
+    - NGINX_HOST=0.0.0.0
+    - NGINX_PORT=80

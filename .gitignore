@@ -6,3 +6,11 @@ venv
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+/nginx/logs/nginx-access.log
+/nginx/logs/nginx-error.log
+/nginx/logs/django.log
+data/db/*
+data/grafana/*
+data/prometheus/*
+!data/**/.gitkeep
+.vscode

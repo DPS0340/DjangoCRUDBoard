@@ -1,0 +1,30 @@
+version: 0.0
+os : linux
+files :
+ - source : /
+   destination: /home/ubuntu/app/
+   overwrite : yes
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+ ApplicationStart:
+   - location : deploy.sh
+     timeout: 60
+     runas: ubuntu
+
+# This section controls the action:
+branch_config:
+    wip\/.*: ~
+
+    feature-dockerize:
+        deploymentGroupName: djangocrudboard-group
+        deploymentGroupConfig:
+            serviceRoleArn: arn:aws:iam::058718939924:role/codedeploy-role
+        deploymentConfig:
+            autoRollbackConfiguration:
+                enabled: false

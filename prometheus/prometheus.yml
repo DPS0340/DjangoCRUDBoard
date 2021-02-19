@@ -1,0 +1,23 @@
+global:
+  scrape_interval: 30s
+  scrape_timeout: 10s
+
+rule_files:
+  - alert.yml
+
+scrape_configs:
+  - job_name: gunicorn-backend
+    metrics_path: /metrics-gunicorn
+    static_configs:
+      - targets:
+        - 'gunicorn-backend:8000'
+  - job_name: nginx-backend
+    metrics_path: /nginx-backend
+    static_configs:
+      - targets:
+        - 'nginx-backend:80'
+  - job_name: database
+    metrics_path: /database
+    static_configs:
+      - targets:
+        - 'database:5432'
