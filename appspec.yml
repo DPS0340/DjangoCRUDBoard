@@ -16,3 +16,24 @@ hooks:
    - location : deploy.sh
      timeout: 60
      runas: ubuntu
+
+# This section controls the action:
+branch_config:
+    wip\/.*: ~
+
+    master:
+        deploymentGroupName: production
+        deploymentGroupConfig:
+            serviceRoleArn: arn:aws:iam::1234567890:role/CodeDeployProductionRole
+            ec2TagFilters:
+                - { Type: KEY_AND_VALUE, Key: node_class, Value: production }
+        deploymentConfig:
+            autoRollbackConfiguration:
+                enabled: true
+
+    '.*':
+        deploymentGroupName: $BRANCH.staging.acme.tld
+        deploymentGroupConfig:
+            serviceRoleArn: arn:aws:iam::1234567890:role/CodeDeployStagingRole
+            ec2TagFilters:
+                - { Type: KEY_AND_VALUE, Key: hostname, Value: phobos.stage }
