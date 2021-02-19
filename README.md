@@ -20,11 +20,13 @@ HTTP API 방식으로 JSON을 결과값으로 출력합니다.
 
 의존성 관리: pipenv
 
-CI: Github Actions
+CI/CD: Github Actions, AWS Codedeploy
 
-배포: AWS Elastic Beanstalk
+배포: Docker, Docker-compose, AWS EC2
 
-DB: AWS RDS상의 PostgreSQL
+DB: Docker-compose 상의 PostgreSQL
+
+로깅: prometheus, grafana
 
 ## 데이터베이스 모델링
 
