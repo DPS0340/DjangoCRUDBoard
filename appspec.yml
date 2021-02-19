@@ -5,11 +5,11 @@ files :
    destination: /home/ubuntu/app/
    overwrite : yes
 
-# permissions:
-#   - object: /
-#     pattern: "**"
-#     owner: ubuntu
-#     group: ubuntu
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
 
 hooks:
  ApplicationStart:
