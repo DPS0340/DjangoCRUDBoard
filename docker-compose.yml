@@ -62,7 +62,7 @@ services:
 
   gunicorn-backend:
     container_name: gunicorn-backend
-    build: .
+    build: a891/djangocrudboard
     volumes:
       - .:/code
     networks:
