@@ -10,4 +10,5 @@ jobs:
     steps:
     - name: Build and push Docker images
       uses: docker/build-push-action@v2.3.0
-
+      with:
+        tags: a891/djangocrudboard:latest
