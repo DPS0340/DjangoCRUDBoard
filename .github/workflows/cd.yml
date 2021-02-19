@@ -8,6 +8,8 @@ jobs:
   build:
       runs-on: ubuntu-latest
       steps:
+      - name: checkout code
+        uses: actions/checkout@master
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
