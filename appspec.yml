@@ -21,19 +21,10 @@ hooks:
 branch_config:
     wip\/.*: ~
 
-    master:
+    feature-dockerize:
         deploymentGroupName: production
         deploymentGroupConfig:
-            serviceRoleArn: arn:aws:iam::1234567890:role/CodeDeployProductionRole
-            ec2TagFilters:
-                - { Type: KEY_AND_VALUE, Key: node_class, Value: production }
+            serviceRoleArn: arn:aws:iam::058718939924:role/codedeploy-role
         deploymentConfig:
             autoRollbackConfiguration:
                 enabled: true
-
-    '.*':
-        deploymentGroupName: $BRANCH.staging.acme.tld
-        deploymentGroupConfig:
-            serviceRoleArn: arn:aws:iam::1234567890:role/CodeDeployStagingRole
-            ec2TagFilters:
-                - { Type: KEY_AND_VALUE, Key: hostname, Value: phobos.stage }
