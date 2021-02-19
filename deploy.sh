@@ -7,4 +7,6 @@ cd $REPOSITORY
 sudo apt-get update \
   && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y docker-compose
 
+sudo chmod -R 777 data
+
 nohup sudo docker-compose down -v && sudo docker-compose up --build > $REPOSITORY/nohup.out 2>&1 &
