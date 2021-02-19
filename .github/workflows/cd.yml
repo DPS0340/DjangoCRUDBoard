@@ -41,7 +41,6 @@ jobs:
           aws-region: eu-central-1
     - name: checkout code
       uses: actions/checkout@v2
-    - id: deploy
     - name: upload S3 for Codedeploy and triggering AWS codedeploy
       uses: webfactory/create-aws-codedeploy-deployment@v0.2.2
     - uses: peter-evans/commit-comment@v1
