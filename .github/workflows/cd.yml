@@ -1,45 +1,13 @@
-name: Deploy master
+name: CI
 on:
   push:
     branches:
-    - master
+    - feature-dockerize
     
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    
-    - name: Checkout source code
-      uses: actions/checkout@v1
-      
-    - name: Pyenv install
-      run: curl https://pyenv.run | bash
-      
-    - name: Pipenv install
-      run: sudo pip3 install pipenv
-    
-    - name: Fetch requirements.txt
-      run: pipenv run pipenv lock -r > requirements.txt
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v2.3.0
 
-    - name: Install test dependencies
-      run: pipenv install
-      
-#     - name: Run test
-#       env:
-#         Django_secret_key: ${{ secrets.DJANGO_SECRET_KEY }}
-#       run: pipenv run python manage.py test
-
-    - name: Generate deployment package
-      run: zip -r deploy.zip . -x '*.git*'
-      
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v14
-      with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: DjangoCRUDBoard
-        environment_name: Djangocrudboard-env-2
-        version_label: ${{ github.sha }}
-        region: ap-northeast-2
-        deployment_package: deploy.zip
-        use_existing_version_if_available: true  
