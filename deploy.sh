@@ -9,4 +9,5 @@ sudo apt-get update \
 
 sudo chmod -R 777 data
 
-nohup sudo docker-compose down -v && sudo docker-compose up --build > $REPOSITORY/nohup.out 2>&1 &
+sudo docker-compose down -v > $REPOSITORY/nohup.out
+nohup && sudo docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
