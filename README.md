@@ -44,12 +44,4 @@ Postman으로 문서화 하였습니다.
 
 'Django_secret_key': 시크릿 키, 온라인 등에서 생성 가능
 
-'DB_USER': DB 사용자 id
-
-'DB_PASSWORD': DB 사용자 비밀번호
-
-'DB_HOST': DB 서버 url
-
-'DB_PORT': DB 서버 포트, PostgreSQL기준 기본값 5432
-
 'BOARD_DEBUG': 디버깅 상태인가 나타내는 변수, 프로덕션에서는 설정 X
