@@ -63,4 +63,4 @@ jobs:
       with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-              @${{ github.actor }} this was deployed as [${{ steps.deploy.outputs.deploymentId }}](https://console.aws.amazon.com/codesuite/codedeploy/deployments/${{ steps.deploy.outputs.deploymentId }}?region=eu-central-1) to group `${{ steps.deploy.outputs.deploymentGroupName }}`.
+              @${{ github.actor }} this was deployed as [${{ steps.deploy.outputs.deploymentId }}](https://console.aws.amazon.com/codesuite/codedeploy/deployments/${{ steps.deploy.outputs.deploymentId }}?region=ap-northeast-2) to group `${{ steps.deploy.outputs.deploymentGroupName }}`.
