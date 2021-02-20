@@ -23,8 +23,7 @@ hooks:
 # This section controls the action:
 branch_config:
     wip\/.*: ~
-
-    feature-dockerize:
+    master:
         deploymentGroupName: djangocrudboard-group
         deploymentGroupConfig:
             serviceRoleArn: arn:aws:iam::058718939924:role/codedeploy-role
