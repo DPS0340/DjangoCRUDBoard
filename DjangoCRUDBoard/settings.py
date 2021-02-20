@@ -31,7 +31,7 @@ DEBUG = True if os.environ.get('BOARD_DEBUG') else False
 ALLOWED_HOSTS = ['*']
 CORS_REPLACE_HTTPS_REFERER = True
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOW_CREDENTIALS = True
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_HTTPONLY = False
