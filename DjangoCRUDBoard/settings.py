@@ -38,8 +38,7 @@ CORS_ALLOW_HEADERS = [ "accept", "accept-encoding", "authorization", "content-ty
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = False
 
-SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
-SESSION_COOKIE_NAME = "user_session"
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
 SESSION_COOKIE_HTTPONLY = False
 SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_SAMESITE = 'None'
