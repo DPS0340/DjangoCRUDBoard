@@ -28,6 +28,8 @@ jobs:
         with:
           push: true
           tags: a891/djangocrudboard:latest
+          build-args:
+            Django_secret_key: ${{ secrets.DJANGO_SECRET_KEY }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
