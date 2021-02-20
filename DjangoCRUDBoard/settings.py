@@ -32,13 +32,17 @@ ALLOWED_HOSTS = ['*']
 CORS_REPLACE_HTTPS_REFERER = True
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = ["GET","POST"]
+CORS_ALLOW_HEADERS = [ "accept", "accept-encoding", "authorization", "content-type", "dnt", "origin", "user-agent", "x-csrftoken", "x-requested-with" ]
+
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SECURE = False
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+SESSION_COOKIE_NAME = "user_session"
 SESSION_COOKIE_HTTPONLY = False
 SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_SAMESITE = 'None'
-CSRF_COOKIE_HTTPONLY = False
-CSRF_COOKIE_SECURE = False
 
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False) # https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error
