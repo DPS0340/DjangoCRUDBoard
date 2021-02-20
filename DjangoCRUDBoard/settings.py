@@ -35,6 +35,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_HTTPONLY = False
+CSRF_COOKIE_HTTPONLY = False
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False) # https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error
 
