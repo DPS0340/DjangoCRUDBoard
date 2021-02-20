@@ -33,7 +33,7 @@ CORS_REPLACE_HTTPS_REFERER = True
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
 
-SESSION_ENGINE = "django.contrib.sessions.backends.file"
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False) # https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error
 
