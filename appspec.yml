@@ -3,7 +3,6 @@ os : linux
 files :
  - source : /
    destination: /home/ubuntu/app/
-   overwrite : yes
 
 permissions:
   - object: /
@@ -12,10 +11,14 @@ permissions:
     group: ubuntu
 
 hooks:
- ApplicationStart:
-   - location : deploy.sh
-     timeout: 60
-     runas: ubuntu
+  BeforeInstall:
+    - location: beforeInstall.sh
+  AfterInstall:
+    - location: afterInstall.sh
+  ApplicationStart:
+    - location : deploy.sh
+      timeout: 60
+      runas: ubuntu
 
 # This section controls the action:
 branch_config:
