@@ -12,9 +12,9 @@ permissions:
 
 hooks:
   BeforeInstall:
-    - location: beforeInstall.sh
+    - location: beforeinstall.sh
   AfterInstall:
-    - location: afterInstall.sh
+    - location: afterinstall.sh
   ApplicationStart:
     - location : deploy.sh
       timeout: 60
