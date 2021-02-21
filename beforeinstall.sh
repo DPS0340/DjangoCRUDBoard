@@ -1,13 +1,14 @@
 #!/bin/sh
 
-REPOSITORY=/home/ubuntu/app
 # https://github.com/aws/aws-codedeploy-agent/issues/14 이슈 참조
 if [ -d /home/ubuntu/app/ ]; then
     if [ -d /home/ubuntu/app-backup ]; then
         rm -rf /home/ubuntu/app-backup
     fi
-    cd $REPOSITORY
-    sudo docker-compose down -v > $REPOSITORY/nohup.out
+    cd /home/ubuntu/app
+    if [ -f /home/ubuntu/app/docker-compose.yml ]; then
+        sudo docker-compose down -v > /home/ubuntu/app/nohup.out
+    fi
     cd /
     mv /home/ubuntu/app /home/ubuntu/app-backup
 fi
