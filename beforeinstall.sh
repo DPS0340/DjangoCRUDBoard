@@ -13,5 +13,3 @@ if [ -d /home/ubuntu/app/ ]; then
     mv /home/ubuntu/app /home/ubuntu/app-backup
 fi
 mkdir -p /home/ubuntu/app
-
-sudo certbot --quiet --agree-tos --email optional.int@kakao.com --nginx -d ec2-3-35-233-97.ap-northeast-2.compute.amazonaws.com
