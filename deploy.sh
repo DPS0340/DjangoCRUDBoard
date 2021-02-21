@@ -2,6 +2,8 @@
 
 REPOSITORY=/home/ubuntu/app
 
+sudo chown ubuntu $REPOSITORY
+
 cd $REPOSITORY
 
 sudo apt-get update \
