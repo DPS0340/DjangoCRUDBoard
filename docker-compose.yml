@@ -63,7 +63,7 @@ services:
 
   gunicorn-backend:
     container_name: gunicorn-backend
-    image: a891/djangocrudboard:latest
+    build: .
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     volumes:
