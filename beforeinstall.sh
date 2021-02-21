@@ -8,7 +8,7 @@ if [ -d /home/ubuntu/app/ ]; then
     fi
     cd $REPOSITORY
     sudo docker-compose down -v > $REPOSITORY/nohup.out
-    cd ~
+    cd /
     mv /home/ubuntu/app /home/ubuntu/app-backup
 fi
 mkdir -p /home/ubuntu/app
