@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(djangocrudboard.ga www.djangocrudboard.ga)
+domains=(djangocrudboard.ga)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="optional.int@kakao.com" # Adding a valid address is strongly recommended
