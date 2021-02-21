@@ -11,7 +11,7 @@ sudo apt-get update \
 
 chmod +x ./init-letsencrypt.sh
 
-./init-letsencrypt.sh
+sudo ./init-letsencrypt.sh
 
 sudo chmod -R 777 data
 
