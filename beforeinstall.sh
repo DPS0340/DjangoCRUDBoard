@@ -5,8 +5,8 @@ if [ -d /home/ubuntu/app/ ]; then
     if [ -d /home/ubuntu/app-backup ]; then
         rm -rf /home/ubuntu/app-backup
     fi
-    cd /home/ubuntu/app
     if [ -f /home/ubuntu/app/docker-compose.yml ]; then
+        cd /home/ubuntu/app
         sudo docker-compose down -v > /home/ubuntu/app/nohup.out
     fi
     cd /
@@ -14,4 +14,4 @@ if [ -d /home/ubuntu/app/ ]; then
 fi
 mkdir -p /home/ubuntu/app
 
-sudo certbot --nginx -d ec2-3-35-233-97.ap-northeast-2.compute.amazonaws.com
+sudo certbot --quiet --agree-tos --email optional.int@kakao.com --nginx -d ec2-3-35-233-97.ap-northeast-2.compute.amazonaws.com
