@@ -151,32 +151,32 @@ services:
         - app-tier
       deploy:
         mode: global
-  elk:
-    image: sebp/elk
-    ports:
-      - "5601:5601"
-      - "9200:9200"
-      - "5044:5044"
-    networks:
-      - elk-tier
-    volumes:
-      - ./data/elk-data:/var/lib/elasticsearch
-      - ./logstash-input.local.conf:/etc/logstash/conf.d/03-input.conf
-    environment:
-      ELASTIC_PASSWORD: elk
+  # elk:
+  #   image: sebp/elk
+  #   ports:
+  #     - "5601:5601"
+  #     - "9200:9200"
+  #     - "5044:5044"
+  #   networks:
+  #     - elk-tier
+  #   volumes:
+  #     - ./data/elk-data:/var/lib/elasticsearch
+  #     - ./logstash-input.local.conf:/etc/logstash/conf.d/03-input.conf
+  #   environment:
+  #     ELASTIC_PASSWORD: elk
 
-  filebeat:
-    build: ./filebeat
-    networks:
-      - elk-tier
-    volumes:
-      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
-      - ./nginx/logs:/var/log/nginx
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      # - /var/run/docker.sock:/var/run/docker.sock:ro
-    depends_on:
-      - nginx-backend
-      - gunicorn-backend
-      - elk
-    links: 
-      - elk
+  # filebeat:
+  #   build: ./filebeat
+  #   networks:
+  #     - elk-tier
+  #   volumes:
+  #     - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+  #     - ./nginx/logs:/var/log/nginx
+  #     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+  #     # - /var/run/docker.sock:/var/run/docker.sock:ro
+  #   depends_on:
+  #     - nginx-backend
+  #     - gunicorn-backend
+  #     - elk
+  #   links: 
+  #     - elk
