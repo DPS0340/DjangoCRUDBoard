@@ -10,7 +10,6 @@ venv
 /nginx/logs/nginx-error.log
 /nginx/logs/django.log
 data/db/*
-data/grafana/*
 data/prometheus/*
 !data/**/.gitkeep
 .vscode
