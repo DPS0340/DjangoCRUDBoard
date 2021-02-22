@@ -30,6 +30,8 @@ services:
       - prometheus-tier
     expose:
       - "9090"
+    ports:
+      - "9090:9090"
   grafana:
     container_name: grafana
     image: grafana/grafana
@@ -44,7 +46,8 @@ services:
     environment:
       GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource
     volumes:
-      - ./data/grafana:/var/lib/grafana
+      - ./data/grafana/grafana:/var/lib/grafana
+      - ./data/grafana/provisioning:/etc/grafana/provisioning
   database:
     image: "postgres"
     labels:
@@ -63,7 +66,11 @@ services:
 
   gunicorn-backend:
     container_name: gunicorn-backend
-    image: a891/djangocrudboard:latest
+    # image: a891/djangocrudboard:latest
+    build:
+      context: .
+      args:
+        Django_secret_key: "${Django_secret_key}"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     volumes:
