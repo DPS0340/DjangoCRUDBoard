@@ -13,7 +13,7 @@ chmod +x ./init-letsencrypt.sh
 
 sudo ./init-letsencrypt.sh -n
 
-sudo chmod -R 777 data
+sudo chmod -R 777 $REPOSITORY/data
 
 mkdir -p $REPOSITORY/data/db
 
