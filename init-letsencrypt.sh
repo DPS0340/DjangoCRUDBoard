@@ -7,7 +7,8 @@ fi
 
 domains=(djangocrudboard.ga)
 rsa_key_size=4096
-data_path="./data/certbot"
+SCRIPT_PATH=$(dirname `which $0`)
+data_path="$SCRIPT_PATH/data/certbot"
 email="optional.int@kakao.com" # Adding a valid address is strongly recommended
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
 
