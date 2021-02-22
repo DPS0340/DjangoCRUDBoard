@@ -2,7 +2,8 @@
 if [ -d /home/ubuntu/app-backup/ ]; then
     mkdir -p /home/ubuntu/app
     if [ -d /home/ubuntu/app-backup/data ]; then
-        mv /home/ubuntu/app-backup/data /home/ubuntu/app/
+        mkdir -p /home/ubuntu/app/data
+        mv /home/ubuntu/app-backup/data/* /home/ubuntu/app/data
     fi
     if [ -d /home/ubuntu/app-backup/logs ]; then
         mkdir -p /home/ubuntu/app/nginx
