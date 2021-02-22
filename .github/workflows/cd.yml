@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: upload
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
     - name: Configuring aws credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
