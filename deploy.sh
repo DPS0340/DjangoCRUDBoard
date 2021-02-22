@@ -1,8 +1,8 @@
 #!/bin/sh
 
-REPOSITORY=/home/ubuntu/app
+REPOSITORY=$(dirname `which $0`)
 
-sudo chown ubuntu $REPOSITORY
+sudo chown $(whoami) $REPOSITORY
 
 cd $REPOSITORY
 
@@ -15,7 +15,7 @@ sudo ./init-letsencrypt.sh -n
 
 sudo chmod -R 777 data
 
-mkdir -p data/db
+mkdir -p $REPOSITORY/data/db
 
 sudo docker-compose down -v > $REPOSITORY/nohup.out
 nohup sudo docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
