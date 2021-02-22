@@ -33,7 +33,7 @@ services:
     expose:
       - "9090"
     ports:
-      - "9090:9090"
+      - "5005:9090"
   grafana:
     container_name: grafana
     image: grafana/grafana
@@ -44,7 +44,7 @@ services:
     networks:
       - prometheus-tier
     ports:
-      - 3000:3000
+      - 5000:3000
     environment:
       GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource
     volumes:
@@ -144,8 +144,10 @@ services:
         - '--path.sysfs=/host/sys'
         - --collector.filesystem.ignored-mount-points
         - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
-      ports:
-        - 9100:9100
+      expose:
+        - "9100"
+      # ports:
+      #   - 9100:9100
       restart: always
       networks:
         - app-tier
