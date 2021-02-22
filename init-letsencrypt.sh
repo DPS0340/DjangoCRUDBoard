@@ -1,10 +1,10 @@
 #!/bin/bash
+# original script from https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
 if ! [ -x "$(command -v docker-compose)" ]; then
   echo 'Error: docker-compose is not installed.' >&2
   exit 1
 fi
-
 domains=(djangocrudboard.ga)
 rsa_key_size=4096
 SCRIPT_PATH=$(dirname `which $0`)
@@ -13,15 +13,31 @@ email="optional.int@kakao.com" # Adding a valid address is strongly recommended
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
 
 if [ -d "$data_path" ]; then
+  SKIP=0
   if [ ! -z "$1" ]; then
     if [ "$1" != "-Y" ] && [ "$1" != "-y" ]; then
+      echo "Existing data found for $domains. exiting..."
+      exit
+    else
+      SKIP=1
+    fi
+  fi
+  if [ $SKIP -eq 0 ]; then
+    read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
+    if [ "$decision" != "Y" ] && [ "$decision" != "y" ]; then
+      echo "exiting..."
       exit
     fi
   fi
-  read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
-  if [ "$decision" != "Y" ] && [ "$decision" != "y" ]; then
-    exit
-  fi
+fi
+
+if [ -d "$data_path" ]; then
+  timestamp=$(date '+%Y%m%d-%H%M%S')
+  folder_name=~/cert-backup/$timestamp
+  mkdir -p $folder_name
+  echo "backing $data_path up to $folder_name..."
+  cp -r $data_path $folder_name
+  echo "done!"
 fi
 
 
