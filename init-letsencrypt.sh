@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   echo 'Error: docker-compose is not installed.' >&2
   exit 1
 fi
-domains=(djangocrudboard.ga)
+domains=(djangocrudboard.ml)
 rsa_key_size=4096
 SCRIPT_PATH=$(dirname `which $0`)
 data_path="$SCRIPT_PATH/data/certbot"
