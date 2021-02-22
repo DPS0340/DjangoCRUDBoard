@@ -38,6 +38,13 @@ Postman으로 문서화 하였습니다.
 
 [API  링크](https://documenter.getpostman.com/view/4929660/TVsxC6r1)
 
+## PORTS
+
+80: 디버그 서버 API, 릴리즈 서버는 443 포트로 리다이렉트
+443: 릴리즈 서버 API 포트로 사용
+5000: grafana
+5005: prometheus
+
 ## 로컬 설정 가이드
 
 ### 환경 변수 설정
