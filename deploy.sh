@@ -17,5 +17,8 @@ mkdir -p $REPOSITORY/data/db
 
 sudo chmod -R 777 $REPOSITORY/data
 
+sudo chown -R ubuntu $REPOSITORY/data
+
+
 docker-compose down -v > $REPOSITORY/nohup.out
 nohup docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
