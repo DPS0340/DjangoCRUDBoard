@@ -11,8 +11,9 @@ sudo apt-get update \
 
 chmod +x ./init-letsencrypt.sh
 
-sudo chmod -R 777 $REPOSITORY/data
 sudo ./init-letsencrypt.sh -n
+
+sudo chmod -R 777 $REPOSITORY/data
 
 mkdir -p $REPOSITORY/data/db
 
