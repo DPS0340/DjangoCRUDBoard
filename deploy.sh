@@ -13,9 +13,9 @@ chmod +x ./init-letsencrypt.sh
 
 sudo ./init-letsencrypt.sh -n
 
-sudo chmod -R 777 $REPOSITORY/data
-
 mkdir -p $REPOSITORY/data/db
+
+sudo chmod -R 777 $REPOSITORY/data
 
 docker-compose down -v > $REPOSITORY/nohup.out
 nohup docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
