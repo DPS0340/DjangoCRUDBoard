@@ -10,9 +10,25 @@ HTTP API 방식으로 JSON을 결과값으로 출력합니다.
 
 [스터디 자료 velog](https://velog.io/@dps0340/KPU-C%ED%81%AC%EB%A6%BF%EC%A5%AC%EC%A5%AC-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%9E%90%EB%A3%8C)
 
+## 로컬 설정 가이드
+
+### 실행
+TODO
+
+### 환경 변수 설정
+
+'Django_secret_key': 시크릿 키, 온라인 등에서 생성 가능
+
+'BOARD_DEBUG': 디버깅 상태인가 나타내는 변수, 프로덕션에서는 설정 X
+
+## 아키텍처
+![Architecture](https://user-images.githubusercontent.com/22572874/108862877-fb82e000-7633-11eb-9dd7-9c096b1862ee.png)
+
+## 데모
+
 ## 팀원
 
-박근우, 장동현, 이하늘, 이지호
+박근우, 장동현, 이하늘, 이지호, 한승욱
 
 ## 사용 스택
 
@@ -30,7 +46,7 @@ DB: Docker-compose 상의 PostgreSQL
 
 ## 데이터베이스 모델링
 
-TODO
+![Database](https://user-images.githubusercontent.com/22572874/108862105-44866480-7633-11eb-8ca5-dece747862d8.png)
 
 ## API
 
@@ -47,11 +63,3 @@ Postman으로 문서화 하였습니다.
 5000: grafana
 
 5005: prometheus
-
-## 로컬 설정 가이드
-
-### 환경 변수 설정
-
-'Django_secret_key': 시크릿 키, 온라인 등에서 생성 가능
-
-'BOARD_DEBUG': 디버깅 상태인가 나타내는 변수, 프로덕션에서는 설정 X
