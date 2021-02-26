@@ -7,7 +7,7 @@ if [ -d /home/ubuntu/app/ ]; then
     fi
     if [ -f /home/ubuntu/app/docker-compose.yml ]; then
         cd /home/ubuntu/app
-        sudo docker-compose down -v > /home/ubuntu/app/nohup.out
+        docker-compose down
     fi
     cd /
     mv /home/ubuntu/app /home/ubuntu/app-backup
