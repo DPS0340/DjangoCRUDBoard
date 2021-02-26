@@ -14,9 +14,12 @@ HTTP API 방식으로 JSON을 결과값으로 출력합니다.
 
 ## 로컬 설정 가이드
 
+### 
+
 ### 실행
 ```
-TODO
+docker-compose stop
+docker-compose up --build
 ```
 
 ### 환경 변수 설정
