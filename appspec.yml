@@ -18,7 +18,6 @@ hooks:
   ApplicationStart:
     - location : deploy.sh
       timeout: 1000 # 도커 컴포즈 빌드 시간 늘리기
-      runas: ubuntu
 
 # This section controls the action:
 branch_config:
