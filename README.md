@@ -8,7 +8,11 @@
 로깅(logging)과 모니터링 기능을 붙이고 CI/CD 파이프라인을 구성하였습니다.\
 React 프론트엔드 깃허브는 [이곳](https://github.com/Front-end-PJ/Forum_Front_end)에서 확인 가능합니다.
 
-HTTP API 방식으로 JSON을 결과값으로 출력합니다.
+HTTP API 방식으로 JSON을 결과값으로 출력합니다.\
+
+ELKB Stack은 도커 컨테이너에서 Ram 4GB 이상 할당되었을 때 원할하게 실행 가능합니다.\
+현재 docker-compose.yml상에서는 주석 처리를 해 놓은 상태입니다.\
+실행을 원하신다면 주석 처리를 해제해주세요.
 
 [스터디 자료 velog](https://velog.io/@dps0340/KPU-C%ED%81%AC%EB%A6%BF%EC%A5%AC%EC%A5%AC-%EC%8A%A4%ED%84%B0%EB%94%94-%EC%9E%90%EB%A3%8C)
 
@@ -62,7 +66,14 @@ TODO
 ## 데이터베이스 모델링
 
 ![Database](https://user-images.githubusercontent.com/22572874/108862105-44866480-7633-11eb-8ca5-dece747862d8.png)
-- 세부 설명(TODO)
+- 세부 설명
+<ul>게시판은 관리자가 생성, 수정 및 삭제 가능.</ul> 
+<ul>게시판에는 여러 게시글이 속한다.</ul> 
+<ul>게시글에는 여러 댓글이 속한다.</ul> 
+<ul>댓글에는 여러 대댓글이 속한다.</ul> 
+<ul>유저는 여러개의 글을 생성, 수정 및 삭제 가능.</ul>
+<ul>유저는 여러개의 댓글을 생성, 수정 및 삭제 가능.</ul>
+<ul>유저는 여러개의 대댓글을 생성, 수정 및 삭제 가능.</ul>
 
 ## API
 
@@ -82,7 +93,13 @@ Postman으로 문서화 하였습니다.
 
 5005: prometheus
 
+5044: logstash
+
+5601: kibana
+
 8080: cadvisor
+
+9200: elasticsearch
 
 ### 컨테이너 전용
 
