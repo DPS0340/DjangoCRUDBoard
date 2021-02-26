@@ -86,7 +86,7 @@ Postman으로 문서화 하였습니다.
 
 ### 컨테이너 전용
 
-5432: postgres
+5432: postgres 
 
 8000: gunicorn 서버
 
