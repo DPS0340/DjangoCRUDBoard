@@ -1,3 +1,5 @@
+#!/bin/sh
+
 
 if [ -d /home/ubuntu/app-backup/ ]; then
     mkdir -p /home/ubuntu/app
