@@ -72,6 +72,8 @@ Postman으로 문서화 하였습니다.
 
 ## PORTS
 
+### 호스트 공유
+
 80: 디버그 서버 API, 릴리즈 서버는 443 포트로 리다이렉트
 
 443: 릴리즈 서버 API 포트로 사용
@@ -79,3 +81,13 @@ Postman으로 문서화 하였습니다.
 5000: grafana
 
 5005: prometheus
+
+8080: cadvisor
+
+### 컨테이너 전용
+
+5432: postgres
+
+8000: gunicorn 서버
+
+9100: node-exporter
