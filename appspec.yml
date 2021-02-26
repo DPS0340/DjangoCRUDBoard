@@ -13,8 +13,10 @@ permissions:
 hooks:
   BeforeInstall:
     - location: beforeinstall.sh
+      runas: ubuntu
   AfterInstall:
     - location: afterinstall.sh
+      runas: ubuntu
   ApplicationStart:
     - location : deploy.sh
       timeout: 1000 # 도커 컴포즈 빌드 시간 늘리기
