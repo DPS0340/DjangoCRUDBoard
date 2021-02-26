@@ -8,7 +8,7 @@
 로깅(logging)과 모니터링 기능을 붙이고 CI/CD 파이프라인을 구성하였습니다.\
 React 프론트엔드 깃허브는 [이곳](https://github.com/Front-end-PJ/Forum_Front_end)에서 확인 가능합니다.
 
-HTTP API 방식으로 JSON을 결과값으로 출력합니다.\
+HTTP API 방식으로 JSON을 결과값으로 출력합니다.
 
 ELKB Stack은 도커 컨테이너에서 Ram 4GB 이상 할당되었을 때 원할하게 실행 가능합니다.\
 현재 docker-compose.yml상에서는 주석 처리를 해 놓은 상태입니다.\
