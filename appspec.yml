@@ -13,11 +13,14 @@ permissions:
 hooks:
   BeforeInstall:
     - location: beforeinstall.sh
+      runas: root
   AfterInstall:
     - location: afterinstall.sh
+      runas: root
   ApplicationStart:
     - location : deploy.sh
       timeout: 1000 # 도커 컴포즈 빌드 시간 늘리기
+      runas: root
 
 # This section controls the action:
 branch_config:
