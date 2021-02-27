@@ -51,7 +51,7 @@ docker-compose up --build
 |모니터링|Grafana, Prometheus|
 
 ## 데모
-TODO
+![demo](https://user-images.githubusercontent.com/22572874/109389553-50826700-7950-11eb-9721-c1d974f54e5d.gif)
 
 ## 팀원
 
