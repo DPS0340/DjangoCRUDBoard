@@ -7,11 +7,12 @@ from django.views import View
 from django.core.serializers import serialize
 import json
 
+
 class PostView(View):
     def get(self, request):
         if "pk" not in request.GET:
             return send_json(boardRequired)
-        data = getSucceedFunc('post')
+        data = getSucceedFunc("post")
         try:
             board = Board.objects.get(pk=request.GET["pk"])
         except Board.DoesNotExist:
@@ -20,24 +21,19 @@ class PostView(View):
         post_num = 10
         if "num" in request.GET:
             post_num = int(request.GET["num"])
-            
-        post_obj = Post.objects.filter(board=board).order_by('unique_number')[:post_num]
-        posts = json.loads(
-            serialize(
-                "json",
-                post_obj
-            )
-        )
+
+        post_obj = Post.objects.filter(board=board).order_by("unique_number")[:post_num]
+        posts = json.loads(serialize("json", post_obj))
         for post in posts:
-            author_pk = post['fields']['author']
+            author_pk = post["fields"]["author"]
             author = User.objects.filter(pk=author_pk)
-            post['fields']['author'] = get_user(author)['data']
-            pk = post['pk']
+            post["fields"]["author"] = get_user(author)["data"]
+            pk = post["pk"]
             replies = Reply.objects.filter(post=pk)
             reply_length = len(replies)
-            post['reply_length'] = reply_length
+            post["reply_length"] = reply_length
 
-        data['data'] = posts
+        data["data"] = posts
         return send_json(data)
 
     @login_required
@@ -48,8 +44,8 @@ class PostView(View):
             return send_json(illegalArgument)
         session = request.session
         decoded = decode_jwt(session)
-        userid = decoded['userid']
-        board = Board.objects.filter(pk=dic['pk'])
+        userid = decoded["userid"]
+        board = Board.objects.filter(pk=dic["pk"])
         if len(board) == 0:
             return send_json(boardDoesNotExists)
         board = board[0]
@@ -58,23 +54,28 @@ class PostView(View):
             return send_json(AnsDoesNotMatch)
         author = author[0]
         unique_number = len(Post.objects.filter(board=board)) + 1
-        Post.objects.create(title=dic['title'], board=board, author=author,
-                            content=dic['content'], unique_number=unique_number)
+        Post.objects.create(
+            title=dic["title"],
+            board=board,
+            author=author,
+            content=dic["content"],
+            unique_number=unique_number,
+        )
         data = postSucceed
         return send_json(data)
 
     @login_required
     def delete(self, request):
-        if 'pk' not in byte_to_dict(request.body):
+        if "pk" not in byte_to_dict(request.body):
             return send_json(illegalArgument)
         else:
             dic = byte_to_dict(request.body)  # 대댓글 pk
-            filtered = Post.objects.filter(pk=dic['pk'])
+            filtered = Post.objects.filter(pk=dic["pk"])
         if len(filtered) != 1:
             return send_json(postDoesNotExists)
-        session = request.session      # 접속 유저중 특정 유저를 인식
+        session = request.session  # 접속 유저중 특정 유저를 인식
         decoded = decode_jwt(session)
-        userid = decoded['userid']  # 로그인한 유저의 pk
+        userid = decoded["userid"]  # 로그인한 유저의 pk
 
         if userid == filtered[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
             filtered.delete()
@@ -85,18 +86,18 @@ class PostView(View):
     @login_required
     def put(self, request):
         dic = byte_to_dict(request.body)
-        if dic.get('pk') is None or dic.get('content') is None:
+        if dic.get("pk") is None or dic.get("content") is None:
             return send_json(illegalArgument)
         else:
-            filtered = Post.objects.filter(pk=dic['pk'])
+            filtered = Post.objects.filter(pk=dic["pk"])
         if len(filtered) != 1:
             return send_json(postDoesNotExists)
-        session = request.session      # 접속 유저중 특정 유저를 인식
+        session = request.session  # 접속 유저중 특정 유저를 인식
         decoded = decode_jwt(session)
-        userid = decoded['userid']  # 로그인한 유저의 pk
+        userid = decoded["userid"]  # 로그인한 유저의 pk
 
         if userid == filtered[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
-            filtered.delete()
-            return send_json(deletePostSucceed)
+            filtered.update(content=dic["content"])
+            return send_json(changePostSucceed)
         else:
             return send_json(postDoesNotMatch)
