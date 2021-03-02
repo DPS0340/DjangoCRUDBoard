@@ -96,7 +96,7 @@ class PostView(View):
         userid = decoded['userid']  # 로그인한 유저의 pk
 
         if userid == filtered[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
-            filtered.delete()
+            filtered.update(content=dic['content'])
             return send_json(deletePostSucceed)
         else:
             return send_json(postDoesNotMatch)
