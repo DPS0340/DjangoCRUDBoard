@@ -51,6 +51,8 @@ CSRF_COOKIE_SECURE = False
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SAMESITE = "None"
 
 
 COMPRESS_ENABLED = os.environ.get(
