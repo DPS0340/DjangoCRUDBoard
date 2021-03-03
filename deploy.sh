@@ -4,10 +4,6 @@ REPOSITORY=$(dirname `which $0`)
 
 sudo chown $(whoami) $REPOSITORY
 
-Django_secret_key=$Django_secret_key
-
-sudo export Django_secret_key=$Django_secret_key
-
 cd $REPOSITORY
 
 sudo apt-get update \
@@ -26,4 +22,4 @@ sudo chown -R ubuntu $REPOSITORY/data
 
 
 sudo docker-compose down -v > $REPOSITORY/nohup.out
-sudo nohup docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
+sudo -e nohup docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
