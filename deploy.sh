@@ -22,4 +22,4 @@ sudo chown -R ubuntu $REPOSITORY/data
 
 
 sudo docker-compose down -v > $REPOSITORY/nohup.out
-sudo -e nohup docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
+sudo -E nohup docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
