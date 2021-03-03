@@ -86,7 +86,7 @@ class PostView(View):
     @login_required
     def put(self, request):
         dic = byte_to_dict(request.body)
-        if dic.get("pk") is None or dic.get("content") is None:
+        if dic.get("pk") is None or not any([dic.get("title"), dic.get("content")]):
             return send_json(illegalArgument)
         else:
             filtered = Post.objects.filter(pk=dic["pk"])
@@ -97,7 +97,12 @@ class PostView(View):
         userid = decoded["userid"]  # 로그인한 유저의 pk
 
         if userid == filtered[0].author.id:  # 로그인한 유저와 삭제할 대댓글 작성 유저가 같으면
-            filtered.update(content=dic["content"])
+            filtered.update(
+                title=dic.get("title") if dic.get("title") else filtered[0].title,
+                content=dic.get("content")
+                if dic.get("content")
+                else filtered[0].content,
+            )
             return send_json(changePostSucceed)
         else:
             return send_json(postDoesNotMatch)
