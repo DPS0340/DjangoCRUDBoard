@@ -4,6 +4,10 @@ REPOSITORY=$(dirname `which $0`)
 
 sudo chown $(whoami) $REPOSITORY
 
+Django_secret_key=$Django_secret_key
+
+sudo export Django_secret_key=$Django_secret_key
+
 cd $REPOSITORY
 
 sudo apt-get update \
@@ -12,6 +16,7 @@ sudo apt-get update \
 chmod +x ./init-letsencrypt.sh
 
 sudo ./init-letsencrypt.sh -n
+
 
 mkdir -p $REPOSITORY/data/db
 
