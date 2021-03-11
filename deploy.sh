@@ -28,6 +28,3 @@ touch ./nohup.out
 
 sudo docker-compose down -v
 sudo -E nohup docker-compose up --build > ./nohup.out 2>&1 &
-~                                                                                                                                                                                                              
-~                                                                                                                                                                                                              
-~                                                                         
