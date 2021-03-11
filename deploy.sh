@@ -20,6 +20,7 @@ sudo chmod -R 777 $REPOSITORY/data
 
 sudo chown -R ubuntu $REPOSITORY/data
 
+touch $REPOSITORY/nohup.out
 
 sudo docker-compose down -v > $REPOSITORY/nohup.out
 sudo -E nohup docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
