@@ -24,5 +24,5 @@ sudo chown -R ubuntu ./data
 
 touch ./nohup.out
 
-sudo docker-compose down -v > ./nohup.out
-sudo -E nohup docker-compose up --build >> ./nohup.out 2>&1 &
+sudo docker-compose down -v
+sudo -E nohup docker-compose up --build > ./nohup.out 2>&1 &
