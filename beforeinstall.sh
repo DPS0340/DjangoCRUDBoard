@@ -7,9 +7,9 @@ if [ -d /home/ubuntu/app/ ]; then
         sudo docker-compose down -v
     fi
     if [ -d /home/ubuntu/app-backup ]; then
-        rm -rf /home/ubuntu/app-backup
+        sudo rm -rf /home/ubuntu/app-backup
     fi
     cd /
-    mv /home/ubuntu/app /home/ubuntu/app-backup
+    sudo mv /home/ubuntu/app /home/ubuntu/app-backup
 fi
 mkdir -p /home/ubuntu/app
