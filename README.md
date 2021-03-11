@@ -1,6 +1,6 @@
 # KPU C&D 프로젝트 - 게시판 백엔드(Django)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![GitHub](https://img.shields.io/github/license/DPS0340/DjangoCRUDBoard?style=for-the-badge) ![Website](https://img.shields.io/website?down_color=grey&style=for-the-badge&up_color=blue&up_message=online&url=https%3A%2F%2Fdjangocrudboard.ml%2Fstatus)
@@ -64,6 +64,7 @@ docker-compose up --build
 <table>
   <tr>
     <td align="center"><a href="https://velog.io/@dps0340"><img src="https://avatars.githubusercontent.com/u/32592965?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jiho lee</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=DPS0340" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Gnu-Kenny"><img src="https://avatars.githubusercontent.com/u/70069253?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Geunwoo Park</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=Gnu-Kenny" title="Code">💻</a></td>
   </tr>
 </table>
 
