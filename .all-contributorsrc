@@ -1,0 +1,60 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "DPS0340",
+      "name": "jiho lee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32592965?v=4",
+      "profile": "https://velog.io/@dps0340",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ww8007",
+      "name": "장동현",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54137044?v=4",
+      "profile": "https://github.com/ww8007",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "SeungWookHan",
+      "name": "Wooogy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22572874?v=4",
+      "profile": "https://github.com/SeungWookHan",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Gnu-Kenny",
+      "name": "Geunwoo Park",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70069253?v=4",
+      "profile": "https://github.com/Gnu-Kenny",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "oldsalao",
+      "name": "Lee Ha Neul",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72501782?v=4",
+      "profile": "https://github.com/oldsalao",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "DjangoCRUDBoard",
+  "projectOwner": "DPS0340",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

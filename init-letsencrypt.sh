@@ -1,6 +1,9 @@
 #!/bin/bash
 # original script from https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
+REPOSITORY=$(dirname `which $0`)
+cd $REPOSITORY
+
 if ! [ -x "$(command -v docker-compose)" ]; then
   echo 'Error: docker-compose is not installed.' >&2
   exit 1

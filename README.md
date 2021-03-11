@@ -1,4 +1,7 @@
-# KPU C크릿쥬쥬 프로젝트 - 게시판 백엔드(Django)
+# KPU C&D 프로젝트 - 게시판 백엔드(Django)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![GitHub](https://img.shields.io/github/license/DPS0340/DjangoCRUDBoard?style=for-the-badge) ![Website](https://img.shields.io/website?down_color=grey&style=for-the-badge&up_color=blue&up_message=online&url=https%3A%2F%2Fdjangocrudboard.ml%2Fstatus)
 
@@ -54,6 +57,24 @@ docker-compose up --build
 ![demo](https://user-images.githubusercontent.com/22572874/109389553-50826700-7950-11eb-9721-c1d974f54e5d.gif)
 
 ## 팀원
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://velog.io/@dps0340"><img src="https://avatars.githubusercontent.com/u/32592965?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jiho lee</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=DPS0340" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ww8007"><img src="https://avatars.githubusercontent.com/u/54137044?v=4?s=100" width="100px;" alt=""/><br /><sub><b>장동현</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=ww8007" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/SeungWookHan"><img src="https://avatars.githubusercontent.com/u/22572874?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Wooogy</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=SeungWookHan" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Gnu-Kenny"><img src="https://avatars.githubusercontent.com/u/70069253?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Geunwoo Park</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=Gnu-Kenny" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/oldsalao"><img src="https://avatars.githubusercontent.com/u/72501782?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lee Ha Neul</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=oldsalao" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 | 이름   | 학과         | 역할 | 소개 페이지                                         |
 | ------ | ------------ | ---- | --------------------------------------------------- |
