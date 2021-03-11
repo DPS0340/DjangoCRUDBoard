@@ -1,5 +1,7 @@
 #!/bin/sh
   
+source /home/ubuntu/.bashrc
+
 REPOSITORY=$(dirname `which $0`)
 
 sudo chown $(whoami) $REPOSITORY
@@ -26,3 +28,6 @@ touch ./nohup.out
 
 sudo docker-compose down -v
 sudo -E nohup docker-compose up --build > ./nohup.out 2>&1 &
+~                                                                                                                                                                                                              
+~                                                                                                                                                                                                              
+~                                                                         
