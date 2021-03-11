@@ -65,6 +65,7 @@ docker-compose up --build
   <tr>
     <td align="center"><a href="https://velog.io/@dps0340"><img src="https://avatars.githubusercontent.com/u/32592965?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jiho lee</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=DPS0340" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/SeungWookHan"><img src="https://avatars.githubusercontent.com/u/22572874?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Wooogy</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=SeungWookHan" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Gnu-Kenny"><img src="https://avatars.githubusercontent.com/u/70069253?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Geunwoo Park</b></sub></a><br /><a href="https://github.com/DPS0340/DjangoCRUDBoard/commits?author=Gnu-Kenny" title="Code">💻</a></td>
   </tr>
 </table>
 
