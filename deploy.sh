@@ -1,8 +1,10 @@
 #!/bin/sh
-
+  
 REPOSITORY=$(dirname `which $0`)
 
 sudo chown $(whoami) $REPOSITORY
+
+echo $REPOSITORY
 
 cd $REPOSITORY
 
@@ -14,13 +16,13 @@ chmod +x ./init-letsencrypt.sh
 sudo ./init-letsencrypt.sh -n
 
 
-mkdir -p $REPOSITORY/data/db
+mkdir -p ./data/db
 
-sudo chmod -R 777 $REPOSITORY/data
+sudo chmod -R 777 ./data
 
-sudo chown -R ubuntu $REPOSITORY/data
+sudo chown -R ubuntu ./data
 
-touch $REPOSITORY/nohup.out
+touch ./nohup.out
 
-sudo docker-compose down -v > $REPOSITORY/nohup.out
-sudo -E nohup docker-compose up --build >> $REPOSITORY/nohup.out 2>&1 &
+sudo docker-compose down -v > ./nohup.out
+sudo -E nohup docker-compose up --build >> ./nohup.out 2>&1 &
