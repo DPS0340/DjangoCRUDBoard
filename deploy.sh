@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 source /home/ubuntu/.bashrc
 
 export COMPOSE_PROJECT_NAME=DjangoCrudBoard
