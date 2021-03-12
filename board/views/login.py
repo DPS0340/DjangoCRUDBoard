@@ -38,6 +38,7 @@ class LoginView(View):
             data = userAlreadyLogin
             # 프론트 요청으로 userid 암호화하지 않고 넘김
             data['userid'] = user.id
+            data['username'] = user.username
             return send_json(data)
         else:
             data = loginRequired
