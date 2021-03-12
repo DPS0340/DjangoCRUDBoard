@@ -1,5 +1,5 @@
 #!/bin/sh
-
+export COMPOSE_PROJECT_NAME=DjangoCrudBoard
 # https://github.com/aws/aws-codedeploy-agent/issues/14 이슈 참조
 if [ -d /home/ubuntu/app/ ]; then
     if [ -f /home/ubuntu/app/docker-compose.yml ]; then
