@@ -30,7 +30,7 @@ class UserView(View):
         filtered = User.objects.filter(nickname=dic['nickname'])
         if filtered.count() != 0:
             return send_json(userAlreadyRegistered)
-        User.objects.create_user(*dic.values())
+        User.objects.create_user(**dic)
         return send_json(registerSucceed)
 
     def delete(self, request):
