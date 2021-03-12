@@ -1,6 +1,7 @@
 #!/bin/sh
-  
 source /home/ubuntu/.bashrc
+
+export COMPOSE_PROJECT_NAME=DjangoCrudBoard
 
 REPOSITORY=$(dirname `which $0`)
 
