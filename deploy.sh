@@ -1,13 +1,11 @@
 #!/bin/bash
-source /home/ubuntu/.bashrc
+. /home/ubuntu/.bashrc
 
 export COMPOSE_PROJECT_NAME=DjangoCrudBoard
 
 REPOSITORY=$(dirname `which $0`)
 
 chown $(whoami) $REPOSITORY
-
-echo $REPOSITORY
 
 cd $REPOSITORY
 
