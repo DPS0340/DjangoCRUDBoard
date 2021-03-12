@@ -20,11 +20,14 @@ class UserView(View):
         return send_json(result)
 
     def post(self, request):
-        keys = ['username', 'email', 'password']
+        keys = ['username', 'nickname', 'email', 'password']
         dic = pop_args(request.POST, *keys)
         if None in dic.values():
             return send_json(illegalArgument)
         filtered = User.objects.filter(username=dic['username'])
+        if filtered.count() != 0:
+            return send_json(userAlreadyRegistered)
+        filtered = User.objects.filter(nickname=dic['nickname'])
         if filtered.count() != 0:
             return send_json(userAlreadyRegistered)
         User.objects.create_user(*dic.values())
@@ -45,12 +48,17 @@ class UserView(View):
         return send_json(deleteUserSucceed)
 
     def put(self, request):
-        keys = ['username', 'email', 'password', 'm_username', 'm_email', 'm_password']
+        original = ['username', 'nickname', 'email', 'password']
+        to_modified = ['m_username', 'm_nickname', 'm_email', 'm_password']
+        keys = [*original, *to_modified]
         request_dict = byte_to_dict(request.body)
+        divide_index = len(keys)
         dic = pop_args(request_dict, *keys)
-        if None in list(dic.values())[:3]: # username, email, password 파라미터 없이 온다면
+        # username, email, password 파라미터 없이 온다면
+        if None in list(dic.values())[:divide_index]:
             return send_json(illegalArgument)
-        if not any(list(dic.values())[3:]): # m_username, m_email, m_password 다 아무것도 없을시
+        # m_username, m_email, m_password 다 아무것도 없을시
+        if not any(list(dic.values())[divide_index:]):
             return send_json(illegalModifyArgument)
         filtered = User.objects.filter(username=dic['username'], email=dic['email'])
         if filtered.count() == 0:
