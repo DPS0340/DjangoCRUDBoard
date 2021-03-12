@@ -13,5 +13,5 @@ chmod +x ./init-letsencrypt.sh
 mkdir -p ./data/db
 chmod -R 777 ./data
 touch ./nohup.out
-docker-compose down -v
-nohup docker-compose up --build > ./nohup.out 2>&1 &
+sudo docker-compose down -v
+sudo nohup docker-compose up --build > ./nohup.out 2>&1 &
