@@ -4,7 +4,7 @@ from .constants import MAX_CHARFIELD_LENGTH
 
 class User(Default_User):
     isAdmin = models.BooleanField(default=False)
-    username = models.CharField(max_length=MAX_CHARFIELD_LENGTH)
+    nickname = models.CharField(max_length=MAX_CHARFIELD_LENGTH)
 
 # 게시판 모델
 # 이름만 가진다
