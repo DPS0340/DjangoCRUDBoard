@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 REPOSITORY=$(dirname `which $0`)
-chown $(whoami) $REPOSITORY
 cd $REPOSITORY
 echo $Django_secret_key
 
