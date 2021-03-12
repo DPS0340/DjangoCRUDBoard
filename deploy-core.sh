@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-REPOSITORY=$(dirname `which $0`)
+REPOSITORY=/home/ubuntu/app/
 cd $REPOSITORY
 echo $Django_secret_key
 echo $COMPOSE_PROJECT_NAME
