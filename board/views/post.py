@@ -18,11 +18,16 @@ class PostView(View):
         except Board.DoesNotExist:
             return send_json(boardDoesNotExists)
 
-        post_num = 10
-        if "num" in request.GET:
-            post_num = int(request.GET["num"])
+        start = 0
+        end = 10
+        if "start" in request.GET:
+            start = int(request.GET["start"])
+        if "end" in request.GET:
+            end = int(request.GET["end"])
+        if end < start:
+            return send_json(illegalArgument)
 
-        post_obj = Post.objects.filter(board=board).order_by("unique_number")[:post_num]
+        post_obj = Post.objects.filter(board=board).order_by("unique_number")[start:end]
         posts = json.loads(serialize("json", post_obj))
         for post in posts:
             author_pk = post["fields"]["author"]
