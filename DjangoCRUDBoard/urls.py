@@ -1,3 +1,4 @@
+from board.views.replies import RepliesView
 from board.views.isAdmin import IsAdminView
 from board.views.promote import PromoteView
 from django.contrib import admin
@@ -32,4 +33,5 @@ urlpatterns = [
     path(r"^answer_reply/?$", AnswerReplyView.as_view()),
     path(r"^promote/?$", PromoteView.as_view()),
     path(r"^is_admin/?$", IsAdminView.as_view()),
+    path(r"^replies/?$", RepliesView.as_view()),
 ]
