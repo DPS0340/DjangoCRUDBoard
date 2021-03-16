@@ -11,8 +11,10 @@ venv
 /nginx/logs/django.log
 data/db/*
 data/prometheus/*
+data/grafana/*
 !data/**/.gitkeep
 .vscode
 data/certbot/*
 data/elk-data/*
 nohup.out
+**/.DS_Store
