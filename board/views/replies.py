@@ -41,6 +41,11 @@ class RepliesView(View):
                     .order_by('unique_number')  # 댓글은 오름차순
                 )
             )
+            for answer_reply in answer_replies:
+                author_pk = answer_reply['fields']['author']
+                author = User.objects.filter(pk=author_pk)
+                author = get_user(author)
+                answer_reply['fields']['author'] = author['data']
             reply['recomment_data'] = answer_replies
 
         data['data'] = replies
