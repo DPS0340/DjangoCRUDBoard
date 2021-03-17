@@ -58,7 +58,13 @@ class PostView(View):
         if len(author) == 0:
             return send_json(AnsDoesNotMatch)
         author = author[0]
-        unique_number = len(Post.objects.filter(board=board)) + 1
+        unique_number_query = Post.objects.filter(
+            board=board).order_by("-unique_number")
+        if len(unique_number_query) == 0:
+            unique_number = 1
+        else:
+            unique_number_obj = json.loads(serialize("json", unique_number_query))[0]
+            unique_number = unique_number_obj['fields']['unique_number'] + 1
         Post.objects.create(
             title=dic["title"],
             board=board,
