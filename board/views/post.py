@@ -23,11 +23,11 @@ class PostView(View):
         if "start" in request.GET:
             start = int(request.GET["start"])
         if "end" in request.GET:
-            end = int(request.GET["end"])
+            end = int(request.GET["end"]) + 1
         if end < start:
             return send_json(illegalArgument)
 
-        post_obj = Post.objects.filter(board=board).order_by("unique_number")[start:end]
+        post_obj = Post.objects.filter(board=board).order_by("-unique_number")[start:end]
         posts = json.loads(serialize("json", post_obj))
         for post in posts:
             author_pk = post["fields"]["author"]
