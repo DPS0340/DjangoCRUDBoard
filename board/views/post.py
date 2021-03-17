@@ -23,7 +23,7 @@ class PostView(View):
         if "start" in request.GET:
             start = int(request.GET["start"])
         if "end" in request.GET:
-            end = int(request.GET["end"]) + 1
+            end = int(request.GET["end"])
         if end < start:
             return send_json(illegalArgument)
 
