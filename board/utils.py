@@ -58,13 +58,13 @@ def byte_to_dict(data):
 def get_user(users):
     if users.count() != 1:
         return userDoesNotMatch
+    user = users[0]
     user_dict = json.loads(
         serialize(
             "json",
             users
         )
     )
-    user = users[0]
     default_user = Default_User.objects.filter(pk=user.pk)
     default_user_dict = json.loads(
         serialize(
@@ -75,7 +75,8 @@ def get_user(users):
     default_user_dict = default_user_dict[0]
     del default_user_dict['fields']['password']
     user_dict = user_dict[0]
-    user_dict.update(default_user_dict)
+    user_dict['fields'].update(default_user_dict['fields'])
+    print('user_dict:', user_dict)
     result = getSucceedFunc('user')
     result['data'] = user_dict
     return result
